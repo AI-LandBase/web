@@ -3,689 +3,829 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="沖縄の宿泊業界専門AI企業AI.LandBase。AIテクノロジーで宿泊事業者のデータドリブン経営を支援。価格最適化、業務自動化、17言語対応チャットボットなど包括的AIソリューションを提供。無料相談受付中。">
-    <title>AI.LandBase｜沖縄宿泊業界専門AIテクノロジー企業 - データドリブン経営支援</title>
-    
-    <!-- SEO & Social Meta -->
-    <meta name="keywords" content="沖縄,宿泊,AI,ホテル経営,効率化,民泊,管理代行,宿泊業,DX,観光業,データ分析,沖縄北部,ホテル,AIチャットボット,価格最適化">
-    <meta property="og:title" content="AI.LandBase｜沖縄宿泊業界専門AIテクノロジー企業">
-    <meta property="og:description" content="AIテクノロジーで沖縄の宿泊事業者のデータドリブン経営を支援。価格最適化、業務自動化、17言語対応チャットボットなど包括的AIソリューションを提供。">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://ai-landbase.jp">
-    <meta name="twitter:card" content="summary_large_image">
-    
-    <!-- Fonts -->
+    <title>AI.LandBase — Concept B: Island Breeze</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome for icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-    
-    <!-- External CSS -->
-    <link rel="stylesheet" href="styles.css">
-    
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "AI.LandBase",
-        "alternateName": "アイランドベース",
-        "url": "https://ai-landbase.jp",
-        "logo": "https://page.gensparksite.com/v1/base64_upload/ca73953eb5f582bd260c5b1759525f95#",
-        "description": "沖縄の宿泊業界専門AI企業。AIテクノロジーで宿泊事業者のデータドリブン経営を支援。",
-        "foundingDate": "2025-06-26",
-        "founder": {
-            "@type": "Person",
-            "name": "末永 壽蔵"
-        },
-        "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "今帰仁村湧川 852-2",
-            "addressLocality": "国頭郡",
-            "addressRegion": "沖縄県",
-            "postalCode": "905-0412",
-            "addressCountry": "JP"
-        },
-        "telephone": "+81-80-1234-5678",
-        "email": "info@ai-landbase.jp",
-        "sameAs": [
-            "https://ai-landbase.jp"
-        ],
-        "hasOfferCatalog": {
-            "@type": "OfferCatalog",
-            "name": "AI宿泊業界支援サービス",
-            "itemListElement": [
-                {
-                    "@type": "Offer",
-                    "itemOffered": {
-                        "@type": "Service",
-                        "name": "スタンダードプラン",
-                        "description": "AI分析・月次レポート・Web運営・競合分析・月次オンライン面談"
-                    },
-                    "price": "50000",
-                    "priceCurrency": "JPY",
-                    "priceValidUntil": "2025-12-31"
-                }
-            ]
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg: #f7f9fc;
+            --bg-warm: #edf3f8;
+            --bg-blue: #e6f2fa;
+            --text: #1a2e3d;
+            --text-light: #4a6d80;
+            --text-muted: #8aaab8;
+            --blue: #1A5C8C;
+            --blue-bright: #2BADE5;
+            --green: #3AAA6D;
+            --orange: #F58220;
+            --orange-light: #F9A85C;
+            --navy: #143d5c;
+            --cream: #f9fbfe;
+            --white: #ffffff;
+            --font-display: 'Playfair Display', Georgia, serif;
+            --font-body: 'Source Sans 3', sans-serif;
         }
-    }
-    </script>
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- NAV --- */
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 100;
+            padding: 1rem 2rem;
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(250,248,244,0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(26,46,53,0.06);
+        }
+        .nav-logo {
+            display: flex; align-items: center; gap: 0.6rem;
+            font-family: var(--font-display);
+            font-weight: 700; font-size: 1.4rem;
+            color: var(--blue);
+            text-decoration: none;
+        }
+        .nav-logo img {
+            height: 38px; width: auto;
+        }
+        .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+        .nav-links a {
+            color: var(--text-light); text-decoration: none; font-size: 0.9rem;
+            font-weight: 500; transition: color 0.3s; letter-spacing: 0.02em;
+        }
+        .nav-links a:hover { color: var(--blue-bright); }
+        .nav-cta {
+            padding: 0.65rem 1.5rem; border-radius: 8px;
+            background: var(--orange);
+            color: var(--white); font-weight: 600; font-size: 0.85rem;
+            text-decoration: none; transition: all 0.3s;
+        }
+        .nav-cta:hover { background: #e0741a; transform: translateY(-1px); }
+
+        /* --- HERO --- */
+        .hero {
+            min-height: 100vh;
+            display: flex; align-items: center;
+            padding: 7rem 2rem 4rem;
+            position: relative; overflow: hidden;
+        }
+        /* organic blobs */
+        .hero-blob {
+            position: absolute; border-radius: 50%;
+            filter: blur(80px); opacity: 0.4;
+        }
+        .hero-blob-1 {
+            width: 600px; height: 600px;
+            background: var(--blue-bright);
+            top: -200px; right: -100px;
+            animation: blobDrift 20s ease-in-out infinite;
+        }
+        .hero-blob-2 {
+            width: 500px; height: 500px;
+            background: var(--green);
+            bottom: -200px; left: -100px;
+            animation: blobDrift 25s ease-in-out infinite reverse;
+        }
+        .hero-blob-3 {
+            width: 300px; height: 300px;
+            background: var(--orange-light);
+            top: 40%; left: 40%;
+            animation: blobDrift 18s ease-in-out infinite 5s;
+        }
+        @keyframes blobDrift {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -20px) scale(1.05); }
+            66% { transform: translate(-20px, 15px) scale(0.95); }
+        }
+        .hero-inner {
+            max-width: 1100px; margin: 0 auto; width: 100%;
+            position: relative; z-index: 1;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+        }
+        .hero-eyebrow {
+            font-size: 0.8rem; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 0.15em;
+            color: var(--orange);
+            margin-bottom: 1.25rem;
+        }
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: 3.6rem; font-weight: 700; line-height: 1.12;
+            margin-bottom: 1.5rem; color: var(--text);
+        }
+        .hero h1 em {
+            font-style: italic; color: var(--blue);
+        }
+        .hero-desc {
+            font-size: 1.1rem; color: var(--text-light);
+            line-height: 1.75; margin-bottom: 2.5rem;
+            max-width: 480px;
+        }
+        .hero-actions { display: flex; gap: 1rem; align-items: center; }
+        .btn-primary {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 1rem 2rem; border-radius: 10px;
+            background: var(--blue);
+            color: var(--white); font-weight: 600; font-size: 1rem;
+            text-decoration: none; transition: all 0.3s;
+            box-shadow: 0 4px 20px rgba(26,92,140,0.25);
+        }
+        .btn-primary:hover {
+            background: var(--navy);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(26,92,140,0.3);
+        }
+        .btn-text {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            color: var(--blue); font-weight: 600; font-size: 0.95rem;
+            text-decoration: none; transition: color 0.3s;
+        }
+        .btn-text:hover { color: var(--orange); }
+
+        /* Hero visual - illustration style card stack */
+        .hero-visual { position: relative; display: flex; justify-content: center; }
+        .hero-card-stack { position: relative; width: 340px; height: 400px; }
+        .hero-card {
+            position: absolute; border-radius: 20px;
+            padding: 2rem; box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+        }
+        .hero-card-1 {
+            width: 280px; bottom: 0; left: 0;
+            background: var(--white);
+            border: 1px solid rgba(0,0,0,0.05);
+            z-index: 3; transform: rotate(-2deg);
+        }
+        .hero-card-2 {
+            width: 260px; top: 30px; right: 0;
+            background: linear-gradient(135deg, var(--blue), var(--blue-bright)); color: var(--white);
+            z-index: 2; transform: rotate(3deg);
+        }
+        .hero-card-3 {
+            width: 240px; top: 0; left: 30px;
+            background: var(--bg-warm);
+            border: 1px solid rgba(0,0,0,0.05);
+            z-index: 1; transform: rotate(-5deg);
+        }
+        .card-stat {
+            font-family: var(--font-display);
+            font-size: 2.5rem; font-weight: 800; line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+        .card-label {
+            font-size: 0.85rem; font-weight: 500;
+            opacity: 0.8;
+        }
+        .card-icon {
+            font-size: 2rem; margin-bottom: 1rem; opacity: 0.6;
+        }
+
+        /* --- SECTION COMMON --- */
+        section { padding: 6rem 2rem; }
+        .section-inner { max-width: 1100px; margin: 0 auto; }
+        .section-eyebrow {
+            font-size: 0.75rem; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 0.15em;
+            color: var(--orange); margin-bottom: 0.75rem;
+        }
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 2.6rem; font-weight: 700; line-height: 1.15;
+            margin-bottom: 1rem; color: var(--text);
+        }
+        .section-desc {
+            font-size: 1.05rem; color: var(--text-light);
+            max-width: 520px; line-height: 1.7;
+        }
+
+        /* --- PROBLEMS --- */
+        .problems { background: var(--bg); }
+        .problems-header { margin-bottom: 3.5rem; }
+        .problems-grid {
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;
+        }
+        .problem-card {
+            padding: 2rem;
+            background: var(--white);
+            border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 16px;
+            transition: all 0.35s;
+            display: flex; gap: 1.5rem;
+        }
+        .problem-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+        }
+        .problem-icon-wrap {
+            width: 52px; height: 52px; flex-shrink: 0;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--orange), var(--orange-light));
+            display: flex; align-items: center; justify-content: center;
+            color: var(--white); font-size: 1.2rem;
+        }
+        .problem-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.15rem; font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .problem-card p {
+            font-size: 0.9rem; color: var(--text-light); line-height: 1.6;
+        }
+        .problem-solution {
+            margin-top: 0.75rem;
+            font-size: 0.8rem; font-weight: 600; color: var(--blue);
+            display: flex; align-items: center; gap: 0.4rem;
+        }
+
+        /* --- SERVICES --- */
+        .services { background: var(--bg-warm); }
+        .services-header { text-align: center; margin-bottom: 4rem; }
+        .services-header .section-desc { margin: 0 auto; }
+        .services-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+        }
+        .service-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: all 0.35s;
+        }
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 50px rgba(0,0,0,0.1);
+        }
+        .service-card.featured {
+            border: 2px solid var(--blue);
+            position: relative;
+        }
+        .service-badge {
+            position: absolute; top: 1rem; right: 1rem;
+            padding: 0.3rem 0.75rem; border-radius: 100px;
+            background: var(--orange);
+            color: var(--white); font-size: 0.7rem; font-weight: 700;
+        }
+        .service-card-top {
+            padding: 2rem 2rem 1.5rem;
+            background: linear-gradient(135deg, var(--blue), var(--blue-bright));
+            color: var(--white);
+        }
+        .service-card-top .icon {
+            width: 48px; height: 48px; border-radius: 12px;
+            background: rgba(255,255,255,0.2);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.3rem; margin-bottom: 1.25rem;
+        }
+        .service-card-top h3 {
+            font-family: var(--font-display);
+            font-size: 1.3rem; font-weight: 700;
+        }
+        .service-card-body {
+            padding: 1.5rem 2rem 2rem;
+        }
+        .service-card-body > p {
+            font-size: 0.9rem; color: var(--text-light);
+            margin-bottom: 1.25rem; line-height: 1.6;
+        }
+        .service-features {
+            list-style: none; display: flex; flex-direction: column; gap: 0.55rem;
+        }
+        .service-features li {
+            display: flex; align-items: center; gap: 0.6rem;
+            font-size: 0.85rem; color: var(--text);
+        }
+        .service-features li i { color: var(--blue); font-size: 0.7rem; }
+
+        /* --- PRICING --- */
+        .pricing { background: var(--bg); }
+        .pricing-header { text-align: center; margin-bottom: 3rem; }
+        .pricing-header .section-desc { margin: 0 auto; }
+
+        .toggle-wrap { margin-top: 1.5rem; }
+        .pricing-toggle {
+            display: inline-flex; gap: 0.25rem;
+            background: var(--white);
+            border-radius: 10px; padding: 0.25rem;
+            border: 1px solid rgba(0,0,0,0.08);
+        }
+        .toggle-btn {
+            padding: 0.65rem 1.5rem; border-radius: 8px;
+            border: none; background: transparent;
+            font-family: var(--font-body);
+            font-weight: 600; font-size: 0.85rem;
+            color: var(--text-light); cursor: pointer;
+            transition: all 0.3s;
+        }
+        .toggle-btn.active {
+            background: var(--blue);
+            color: var(--white);
+        }
+
+        .pricing-grid {
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;
+            max-width: 850px; margin: 0 auto;
+        }
+        .pricing-card {
+            background: var(--white);
+            border-radius: 20px;
+            border: 1px solid rgba(0,0,0,0.06);
+            overflow: hidden;
+            transition: all 0.35s;
+        }
+        .pricing-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 50px rgba(0,0,0,0.1);
+        }
+        .pricing-card.featured {
+            border: 2px solid var(--blue);
+            box-shadow: 0 8px 30px rgba(26,107,90,0.15);
+        }
+        .pricing-card-header {
+            padding: 2rem 2rem 1.5rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--blue), var(--blue-bright));
+            color: var(--white);
+        }
+        .pricing-plan-name {
+            font-family: var(--font-display);
+            font-size: 1.1rem; font-weight: 600;
+            margin-bottom: 1rem; opacity: 0.9;
+        }
+        .pricing-amount {
+            font-family: var(--font-display);
+            font-size: 2.8rem; font-weight: 800; line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+        .pricing-amount .yen { font-size: 1.3rem; }
+        .pricing-amount .period { font-size: 0.9rem; font-weight: 400; opacity: 0.8; }
+        .pricing-target { font-size: 0.85rem; opacity: 0.85; }
+        .pricing-card-body { padding: 2rem; }
+        .pricing-feature-list {
+            list-style: none; display: flex; flex-direction: column; gap: 0.7rem;
+            margin-bottom: 2rem;
+        }
+        .pricing-feature-list li {
+            display: flex; align-items: center; gap: 0.65rem;
+            font-size: 0.9rem; color: var(--text);
+        }
+        .pricing-feature-list li i { color: var(--blue); font-size: 0.75rem; }
+        .pricing-cta {
+            display: block; text-align: center; padding: 0.9rem;
+            border-radius: 10px; font-weight: 600; font-size: 0.9rem;
+            text-decoration: none; transition: all 0.3s;
+        }
+        .pricing-card:not(.featured) .pricing-cta {
+            border: 2px solid var(--blue); color: var(--blue);
+        }
+        .pricing-card:not(.featured) .pricing-cta:hover {
+            background: var(--bg-blue);
+        }
+        .pricing-card.featured .pricing-cta {
+            background: var(--orange); color: var(--white);
+        }
+        .pricing-card.featured .pricing-cta:hover {
+            background: #e0741a;
+        }
+
+        .spot-section { display: none; }
+        .spot-section.active { display: block; }
+        .monthly-section.active { display: grid; }
+
+        .spot-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem;
+            max-width: 950px; margin: 0 auto;
+        }
+        .spot-card {
+            padding: 2rem 1.5rem; text-align: center;
+            background: var(--white);
+            border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 16px;
+            transition: all 0.3s;
+        }
+        .spot-card:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(0,0,0,0.08); }
+        .spot-card h4 {
+            font-family: var(--font-display);
+            font-size: 1rem; font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+        .spot-price {
+            font-family: var(--font-display);
+            font-size: 1.5rem; font-weight: 700;
+            color: var(--blue); margin-bottom: 0.5rem;
+        }
+        .spot-price span { font-size: 0.85rem; font-weight: 400; color: var(--text-muted); }
+        .spot-card p { font-size: 0.8rem; color: var(--text-muted); }
+
+        /* --- ABOUT --- */
+        .about { background: var(--bg-warm); }
+        .about-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+            margin-top: 3rem;
+        }
+        .about-block h3 {
+            font-family: var(--font-display);
+            font-size: 1.2rem; font-weight: 600;
+            color: var(--blue); margin-bottom: 0.5rem;
+        }
+        .about-block p {
+            font-size: 0.95rem; color: var(--text-light);
+            line-height: 1.7; margin-bottom: 1.5rem;
+        }
+        .company-card {
+            background: var(--white);
+            border-radius: 20px; padding: 2.5rem;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .company-card h4 {
+            font-family: var(--font-display);
+            font-size: 1.15rem; font-weight: 600;
+            color: var(--blue); margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .info-row {
+            display: flex; gap: 1rem;
+            padding: 0.7rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            font-size: 0.9rem;
+        }
+        .info-row:last-child { border-bottom: none; }
+        .info-label { width: 90px; flex-shrink: 0; color: var(--text-muted); font-weight: 500; }
+        .info-value { color: var(--text); }
+
+        /* --- CTA --- */
+        .final-cta {
+            background: linear-gradient(135deg, var(--blue), var(--blue-bright));
+            color: var(--white);
+            padding: 6rem 2rem; text-align: center;
+            position: relative; overflow: hidden;
+        }
+        .final-cta::before {
+            content: ''; position: absolute;
+            top: -50%; right: -30%; width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(255,255,255,0.08), transparent 70%);
+            border-radius: 50%;
+        }
+        .final-cta .section-inner { position: relative; z-index: 1; }
+        .final-cta h2 {
+            font-family: var(--font-display);
+            font-size: 2.8rem; font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .final-cta > .section-inner > p {
+            font-size: 1.05rem; opacity: 0.9;
+            margin-bottom: 2.5rem; max-width: 480px; margin-left: auto; margin-right: auto;
+        }
+        .cta-btn-white {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 1rem 2rem; border-radius: 10px;
+            background: var(--white); color: var(--blue);
+            font-weight: 700; font-size: 1.05rem;
+            text-decoration: none; transition: all 0.3s;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .cta-btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.15); }
+        .cta-contact {
+            display: flex; justify-content: center; gap: 2rem;
+            margin-top: 2rem; flex-wrap: wrap;
+        }
+        .cta-contact-item {
+            display: flex; align-items: center; gap: 0.5rem;
+            font-size: 0.9rem; opacity: 0.9;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            padding: 2.5rem 2rem;
+            border-top: 1px solid rgba(0,0,0,0.06);
+            text-align: center;
+        }
+        footer p { font-size: 0.8rem; color: var(--text-muted); }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 1024px) {
+            .hero-inner { grid-template-columns: 1fr; text-align: center; }
+            .hero h1 { font-size: 2.8rem; }
+            .hero-desc { margin: 0 auto 2rem; }
+            .hero-actions { justify-content: center; }
+            .hero-visual { display: none; }
+            .services-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+            .spot-grid { grid-template-columns: repeat(2, 1fr); }
+            .about-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 640px) {
+            .hero h1 { font-size: 2.2rem; }
+            .section-title { font-size: 2rem; }
+            .problems-grid { grid-template-columns: 1fr; }
+            .pricing-grid { grid-template-columns: 1fr; }
+            .spot-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+        }
+    </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header" role="banner">
-        <nav class="nav-container" role="navigation" aria-label="メインナビゲーション">
-            <div class="nav-brand">
-                <img src="https://drive.google.com/thumbnail?id=11zxS-CXtXcRDu8lznBwdCdqGaZVPSqho" alt="AI.LandBase企業ロゴ" class="logo">
-                <span class="brand-name">AI.LandBase</span>
-            </div>
-            <button class="mobile-menu-toggle" aria-label="メニューを開く" aria-expanded="false">
-                <i class="fas fa-bars" aria-hidden="true"></i>
-            </button>
-            <ul class="nav-menu" role="menubar">
-                <li role="none"><a href="#services" role="menuitem">サービス</a></li>
-                <li role="none"><a href="#pricing" role="menuitem">料金</a></li>
-                <li role="none"><a href="#about" role="menuitem">会社情報</a></li>
-                <li role="none"><a href="#contact" role="menuitem">お問い合わせ</a></li>
-                <li role="none">
-                    <a href="tel:080-3468-1177" class="cta-button" role="menuitem" aria-label="無料相談の電話をかける">
-                        <i class="fas fa-phone" aria-hidden="true"></i>
-                        無料相談
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </header>
 
-    <!-- Main Content -->
-    <main id="main-content">
-        <!-- Hero Section -->
-        <section class="hero" role="banner">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1 class="hero-title">
-                        沖縄の宿泊業界に<br>
-                        <span class="highlight">AIテクノロジー</span>の力を
-                    </h1>
-                    <p class="hero-subtitle">
-                        データドリブンな経営で持続可能な観光産業の発展を支援<br>
-                        人手不足・OTA依存・季節変動の課題をAIが解決します
-                    </p>
-                    <div class="hero-cta">
-                        <a href="tel:080-3468-1177" class="cta-primary" aria-label="今すぐ無料相談の電話をかける">
-                            <i class="fas fa-phone" aria-hidden="true"></i>
-                            今すぐ無料相談
-                            <span class="phone-number">080-3468-1177</span>
-                        </a>
-                        <a href="#services" class="cta-secondary">
-                            サービス詳細を見る
-                            <i class="fas fa-chevron-down" aria-hidden="true"></i>
-                        </a>
-                    </div>
-                    <div class="hero-trust">
-                        <p class="trust-text">
-                            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-                            沖縄県国頭郡今帰仁村 
-                        </p>
-                        <p class="trust-text">
-                            <i class="fas fa-clock" aria-hidden="true"></i>
-                            営業時間：平日10:00-17:00
-                        </p>
-                    </div>
-                </div>
-                <div class="hero-visual">
-                    <div class="hero-image-placeholder">
-                        <i class="fas fa-robot hero-icon" aria-hidden="true"></i>
-                        <div class="floating-elements">
-                            <div class="element element-1"><i class="fas fa-chart-line" aria-hidden="true"></i></div>
-                            <div class="element element-2"><i class="fas fa-bed" aria-hidden="true"></i></div>
-                            <div class="element element-3"><i class="fas fa-mobile-alt" aria-hidden="true"></i></div>
-                            <div class="element element-4"><i class="fas fa-leaf" aria-hidden="true"></i></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+<!-- NAV -->
+<nav>
+    <a href="#" class="nav-logo"><img src="logo.png" alt="AI.LandBase">AI.LandBase</a>
+    <ul class="nav-links">
+        <li><a href="#services">サービス</a></li>
+        <li><a href="#pricing">料金</a></li>
+        <li><a href="#about">会社情報</a></li>
+    </ul>
+    <a href="tel:080-3468-1177" class="nav-cta">
+        <i class="fas fa-phone"></i> 無料相談
+    </a>
+</nav>
 
-        <!-- Problem Section -->
-        <section class="problem" id="problems">
-            <div class="container">
-                <h2 class="section-title">沖縄の宿泊業界が直面する課題</h2>
-                <p class="section-subtitle">現状の経営課題をデータとAIの力で解決します</p>
-                
-                <div class="problem-grid">
-                    <div class="problem-card">
-                        <div class="problem-icon">
-                            <i class="fas fa-users-slash" aria-hidden="true"></i>
-                        </div>
-                        <h3>深刻な人手不足</h3>
-                        <p>スタッフ採用困難、業務負荷増大、サービス品質の低下</p>
-                        <div class="problem-solution">
-                            <i class="fas fa-arrow-right" aria-hidden="true"></i>
-                            <span>AI自動化で解決</span>
-                        </div>
-                    </div>
-                    
-                    <div class="problem-card">
-                        <div class="problem-icon">
-                            <i class="fas fa-chart-line" aria-hidden="true"></i>
-                        </div>
-                        <h3>データ活用の遅れ</h3>
-                        <p>勘頼みの経営、競合分析不足、収益機会の損失</p>
-                        <div class="problem-solution">
-                            <i class="fas fa-arrow-right" aria-hidden="true"></i>
-                            <span>AIダッシュボードで可視化</span>
-                        </div>
-                    </div>
-                    
-                    <div class="problem-card">
-                        <div class="problem-icon">
-                            <i class="fas fa-building" aria-hidden="true"></i>
-                        </div>
-                        <h3>OTA依存の危険性</h3>
-                        <p>手数料負担増、顧客データ不足、価格競争激化</p>
-                        <div class="problem-solution">
-                            <i class="fas fa-arrow-right" aria-hidden="true"></i>
-                            <span>直接予約促進システム</span>
-                        </div>
-                    </div>
-                    
-                    <div class="problem-card">
-                        <div class="problem-icon">
-                            <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-                        </div>
-                        <h3>季節変動への対応</h3>
-                        <p>需給バランス不均衡、価格設定の難しさ、稼働率低下</p>
-                        <div class="problem-solution">
-                            <i class="fas fa-arrow-right" aria-hidden="true"></i>
-                            <span>AI需要予測・動的価格設定</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Solution Section -->
-        <section class="solution" id="solution">
-            <div class="container">
-                <h2 class="section-title">AI.LandBaseの解決策</h2>
-                <p class="section-subtitle">沖縄ブルーゾーンから発信する、持続可能なAIソリューション</p>
-                
-                <div class="solution-content">
-                    <div class="solution-features">
-                        <div class="feature-card">
-                            <div class="feature-icon">
-                                <i class="fas fa-brain" aria-hidden="true"></i>
-                            </div>
-                            <h3>データドリブン経営</h3>
-                            <p>感覚ではなく客観的データに基づく戦略的意思決定を支援</p>
-                        </div>
-                        
-                        <div class="feature-card">
-                            <div class="feature-icon">
-                                <i class="fas fa-robot" aria-hidden="true"></i>
-                            </div>
-                            <h3>業務自動化システム</h3>
-                            <p>AI技術による効率的な業務プロセス最適化と生産性向上</p>
-                        </div>
-                        
-                        <div class="feature-card">
-                            <div class="feature-icon">
-                                <i class="fas fa-globe" aria-hidden="true"></i>
-                            </div>
-                            <h3>17言語対応AI</h3>
-                            <p>多国籍観光客への24時間対応チャットコンシェルジュ</p>
-                        </div>
-                        
-                        <div class="feature-card">
-                            <div class="feature-icon">
-                                <i class="fas fa-leaf" aria-hidden="true"></i>
-                            </div>
-                            <h3>持続可能な成長</h3>
-                            <p>環境配慮と地域社会との共存共栄を重視したエコシステム</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Services Section -->
-        <section class="services" id="services">
-            <div class="container">
-                <h2 class="section-title">サービス・プロダクト</h2>
-                <p class="section-subtitle">包括的なAIソリューションで宿泊業界の変革を支援</p>
-                
-                <div class="services-grid">
-                    <!-- Service 1: 総合支援サービス -->
-                    <div class="service-card">
-                        <div class="service-header">
-                            <div class="service-icon">
-                                <i class="fas fa-cogs" aria-hidden="true"></i>
-                            </div>
-                            <h3>宿泊事業者向け総合支援</h3>
-                        </div>
-                        <div class="service-content">
-                            <p>AI分析からオペレーション代行まで、包括的な経営改善サービス</p>
-                            <ul class="service-features">
-                                <li><i class="fas fa-check" aria-hidden="true"></i>AI分析・月次レポート</li>
-                                <li><i class="fas fa-check" aria-hidden="true"></i>Web運営・競合分析</li>
-                                <li><i class="fas fa-check" aria-hidden="true"></i>清掃・リネン管理代行</li>
-                                <li><i class="fas fa-check" aria-hidden="true"></i>緊急顧客対応</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Service 2: AIプラットフォーム -->
-                    <div class="service-card featured">
-                        <div class="service-header">
-                            <div class="service-icon">
-                                <i class="fas fa-microchip" aria-hidden="true"></i>
-                            </div>
-                            <h3>LandBase AI Suite</h3>
-                            <span class="featured-badge">人気</span>
-                        </div>
-                        <div class="service-content">
-                            <p>9つの専門AIソリューションを統合したプラットフォーム</p>
-                            <div class="ai-solutions">
-                                <div class="ai-item">
-                                    <i class="fas fa-bullhorn" aria-hidden="true"></i>
-                                    <span>MarketingAI</span>
-                                </div>
-                                <div class="ai-item">
-                                    <i class="fas fa-tasks" aria-hidden="true"></i>
-                                    <span>OperationAI</span>
-                                </div>
-                                <div class="ai-item">
-                                    <i class="fas fa-chart-bar" aria-hidden="true"></i>
-                                    <span>AnalyticsAI</span>
-                                </div>
-                                <div class="ai-item">
-                                    <i class="fas fa-yen-sign" aria-hidden="true"></i>
-                                    <span>OptimaPriceAI</span>
-                                </div>
-                                <div class="ai-item">
-                                    <i class="fas fa-comments" aria-hidden="true"></i>
-                                    <span>ConciergeAI</span>
-                                </div>
-                                <div class="ai-item">
-                                    <i class="fas fa-user-friends" aria-hidden="true"></i>
-                                    <span>PersonalizeAI</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Service 3: IoTソリューション -->
-                    <div class="service-card">
-                        <div class="service-header">
-                            <div class="service-icon">
-                                <i class="fas fa-wifi" aria-hidden="true"></i>
-                            </div>
-                            <h3>IoTソリューション</h3>
-                        </div>
-                        <div class="service-content">
-                            <p>スマートデバイスと連携した次世代宿泊体験の提供</p>
-                            <ul class="service-features">
-                                <li><i class="fas fa-check" aria-hidden="true"></i>生体ウェルネスデータ観測</li>
-                                <li><i class="fas fa-check" aria-hidden="true"></i>AIルームマネジメント</li>
-                                <li><i class="fas fa-check" aria-hidden="true"></i>環境制御・省エネ</li>
-                                <li><i class="fas fa-check" aria-hidden="true"></i>異常検知システム</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Benefits Section -->
-        <section class="benefits" id="benefits">
-            <div class="container">
-                <h2 class="section-title">導入メリット</h2>
-                <p class="section-subtitle">AIテクノロジーが実現する具体的な成果</p>
-                
-                <div class="benefits-grid">
-                    <div class="benefit-card">
-                        <div class="benefit-metric">
-                            <span class="metric-number">最大40%</span>
-                            <span class="metric-label">業務効率化</span>
-                        </div>
-                        <h3>生産性の大幅向上</h3>
-                        <p>AI自動化により手作業を削減し、スタッフはより価値の高い業務に集中できます</p>
-                    </div>
-                    
-                    <div class="benefit-card">
-                        <div class="benefit-metric">
-                            <span class="metric-number">平均25%</span>
-                            <span class="metric-label">収益向上</span>
-                        </div>
-                        <h3>データドリブン価格戦略</h3>
-                        <p>AI需要予測と動的価格設定により、最適な収益を実現します</p>
-                    </div>
-                    
-                    <div class="benefit-card">
-                        <div class="benefit-metric">
-                            <span class="metric-number">24時間</span>
-                            <span class="metric-label">365日対応</span>
-                        </div>
-                        <h3>顧客満足度向上</h3>
-                        <p>17言語対応AIチャットボットで、いつでも高品質なカスタマーサービスを提供</p>
-                    </div>
-                    
-                    <div class="benefit-card">
-                        <div class="benefit-metric">
-                            <span class="metric-number">リアルタイム</span>
-                            <span class="metric-label">データ分析</span>
-                        </div>
-                        <h3>戦略的意思決定</h3>
-                        <p>競合分析から市場動向まで、データに基づいた経営判断をサポート</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Pricing Section -->
-        <section class="pricing" id="pricing">
-            <div class="container">
-                <h2 class="section-title">料金プラン</h2>
-                <p class="section-subtitle">明確で分かりやすい料金体系</p>
-                
-                <div class="pricing-toggle">
-                    <button class="toggle-btn active" data-plan="monthly">月額プラン</button>
-                    <button class="toggle-btn" data-plan="spot">スポット発注</button>
-                </div>
-                
-                <div class="pricing-content monthly-plans active">
-                    <div class="pricing-grid">
-                        <div class="pricing-card">
-                            <div class="pricing-header">
-                                <h3>スタンダード</h3>
-                                <div class="price">
-                                    <span class="currency">¥</span>
-                                    <span class="amount">50,000</span>
-                                    <span class="period">/月</span>
-                                </div>
-                                <p class="target">中規模宿泊施設向け</p>
-                            </div>
-                            <div class="pricing-features">
-                                <ul>
-                                    <li><i class="fas fa-check" aria-hidden="true"></i>AI分析・月次レポート</li>
-                                    <li><i class="fas fa-check" aria-hidden="true"></i>Web運営・競合分析</li>
-                                    <li><i class="fas fa-check" aria-hidden="true"></i>月次オンライン面談</li>
-                                    <li><i class="fas fa-check" aria-hidden="true"></i>基本的なAIツール利用</li>
-                                </ul>
-                            </div>
-                            <a href="tel:080-3468-1177" class="pricing-cta" aria-label="スタンダードプランの相談電話をかける">
-                                <i class="fas fa-phone" aria-hidden="true"></i>
-                                相談する
-                            </a>
-                        </div>
-                        
-                        <div class="pricing-card featured">
-                            <div class="pricing-header">
-                                <h3>プロフェッショナル</h3>
-                                <div class="price">
-                                    <span class="amount">個別見積</span>
-                                </div>
-                                <p class="target">大規模宿泊施設向け</p>
-                                <span class="popular-badge">おすすめ</span>
-                            </div>
-                            <div class="pricing-features">
-                                <ul>
-                                    <li><i class="fas fa-check" aria-hidden="true"></i>包括的経営改善</li>
-                                    <li><i class="fas fa-check" aria-hidden="true"></i>AI予約管理システム</li>
-                                    <li><i class="fas fa-check" aria-hidden="true"></i>現地指導・トレーニング</li>
-                                    <li><i class="fas fa-check" aria-hidden="true"></i>カスタムAI開発</li>
-                                    <li><i class="fas fa-check" aria-hidden="true"></i>24時間技術サポート</li>
-                                </ul>
-                            </div>
-                            <a href="tel:080-3468-1177" class="pricing-cta" aria-label="プロフェッショナルプランの相談電話をかける">
-                                <i class="fas fa-phone" aria-hidden="true"></i>
-                                相談する
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="pricing-content spot-services">
-                    <div class="spot-grid">
-                        <div class="spot-card">
-                            <h4>清掃代行</h4>
-                            <div class="spot-price">¥1,000<span>/坪</span></div>
-                            <p>プロフェッショナルな清掃サービス</p>
-                        </div>
-                        <div class="spot-card">
-                            <h4>高品質リネン管理</h4>
-                            <div class="spot-price">¥625<span>/ベッド</span></div>
-                            <p>清潔で快適な寝具の提供</p>
-                        </div>
-                        <div class="spot-card">
-                            <h4>緊急顧客対応</h4>
-                            <div class="spot-price">¥5,000<span>/回</span></div>
-                            <p>24時間体制の緊急サポート</p>
-                        </div>
-                        <div class="spot-card">
-                            <h4>特殊清掃・メンテナンス</h4>
-                            <div class="spot-price">個別見積</div>
-                            <p>エアコン・プール・外壁等</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Trust & Credibility Section -->
-        <section class="trust" id="trust">
-            <div class="container">
-                <h2 class="section-title">信頼と実績</h2>
-                <p class="section-subtitle">沖縄ブルーゾーンから持続可能な未来を創造</p>
-                
-                <div class="trust-grid">
-                    <div class="trust-item">
-                        <div class="trust-icon">
-                            <i class="fas fa-award" aria-hidden="true"></i>
-                        </div>
-                        <h3>最新AI技術</h3>
-                        <p>FinTech・AI分野の専門知識を活かした最先端ソリューション</p>
-                    </div>
-                    
-                    <div class="trust-item">
-                        <div class="trust-icon">
-                            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-                        </div>
-                        <h3>地域密着</h3>
-                        <p>沖縄県国頭郡拠点で地域の特性を深く理解したサービス提供</p>
-                    </div>
-                    
-                    <div class="trust-item">
-                        <div class="trust-icon">
-                            <i class="fas fa-leaf" aria-hidden="true"></i>
-                        </div>
-                        <h3>持続可能性</h3>
-                        <p>環境配慮と地域社会との共存共栄を重視したエコシステム構築</p>
-                    </div>
-                    
-                    <div class="trust-item">
-                        <div class="trust-icon">
-                            <i class="fas fa-shield-alt" aria-hidden="true"></i>
-                        </div>
-                        <h3>データセキュリティ</h3>
-                        <p>責任あるAI活用とデータプライバシー保護を徹底</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section class="about" id="about">
-            <div class="container">
-                <h2 class="section-title">会社情報</h2>
-                
-                <div class="about-content">
-                    <div class="about-text">
-                        <div class="mission-section">
-                            <h3>ミッション</h3>
-                            <p>沖縄の宿泊事業者にAIテクノロジーの力を届け、データドリブンな経営への転換を支援することで、持続可能な観光産業の発展に貢献する</p>
-                        </div>
-                        
-                        <div class="vision-section">
-                            <h3>ビジョン</h3>
-                            <p>2030年までに、沖縄北部の全宿泊事業者がAIを活用した戦略的経営を実践し、データと人間の知恵が融合した新しい観光エコシステムのモデル地域となる</p>
-                        </div>
-                        
-                        <div class="values-section">
-                            <h3>コアバリュー</h3>
-                            <ul class="values-list">
-                                <li><strong>イノベーションと先進性</strong> - AI技術による宿泊業界変革</li>
-                                <li><strong>データドリブンな意思決定</strong> - 客観的データに基づく経営判断</li>
-                                <li><strong>顧客中心主義</strong> - AI活用による顧客体験向上</li>
-                                <li><strong>持続可能性と地域貢献</strong> - 環境配慮と地域社会との共存共栄</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="company-info">
-                        <div class="info-card">
-                            <h4>企業概要</h4>
-                            <div class="info-item">
-                                <strong>企業名</strong>
-                                <span>AI.LandBase（アイランドベース）</span>
-                            </div>
-                            <div class="info-item">
-                                <strong>代表者</strong>
-                                <span>末永 壽蔵</span>
-                            </div>
-                            <div class="info-item">
-                                <strong>設立</strong>
-                                <span>2025年6月26日</span>
-                            </div>
-                            <div class="info-item">
-                                <strong>資本金</strong>
-                                <span>300万円</span>
-                            </div>
-                            <div class="info-item">
-                                <strong>所在地</strong>
-                                <span>〒905-0412<br>沖縄県国頭郡今帰仁村湧川 852-2<br></span>
-                            </div>
-                            <div class="info-item">
-                                <strong>事業領域</strong>
-                                <span>宿泊業界向けAIドリブン経営支援・施設管理代行</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CTA Section -->
-        <section class="final-cta" id="contact">
-            <div class="container">
-                <div class="cta-content">
-                    <h2>まずは無料相談から始めませんか？</h2>
-                    <p>現状の課題をヒアリングし、最適なAIソリューションをご提案いたします</p>
-                    
-                    <div class="cta-options">
-                        <a href="tel:080-3468-1177" class="cta-primary large" aria-label="今すぐ無料相談の電話をかける">
-                            <i class="fas fa-phone" aria-hidden="true"></i>
-                            今すぐ電話で相談
-                            <span class="phone-number">080-3468-1177</span>
-                        </a>
-                        
-                        <div class="contact-info">
-                            <div class="contact-item">
-                                <i class="fas fa-clock" aria-hidden="true"></i>
-                                <span>営業時間：平日10:00-17:00</span>
-                            </div>
-                            <div class="contact-item">
-                                <i class="fas fa-envelope" aria-hidden="true"></i>
-                                <span>メール：info@ai-landbase.jp</span>
-                            </div>
-                            <div class="contact-item">
-                                <i class="fas fa-globe" aria-hidden="true"></i>
-                                <span>Web：ai-landbase.jp</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="consultation-benefits">
-                        <h3>無料相談で得られること</h3>
-                        <ul>
-                            <li><i class="fas fa-check" aria-hidden="true"></i>現状の課題分析</li>
-                            <li><i class="fas fa-check" aria-hidden="true"></i>最適なソリューション提案</li>
-                            <li><i class="fas fa-check" aria-hidden="true"></i>導入効果の試算</li>
-                            <li><i class="fas fa-check" aria-hidden="true"></i>具体的な導入スケジュール</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer" role="contentinfo">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <div class="footer-brand">
-                        <img src="https://drive.google.com/thumbnail?id=11zxS-CXtXcRDu8lznBwdCdqGaZVPSqho" alt="AI.LandBase企業ロゴ" class="footer-logo">
-                        <h3>AI.LandBase</h3>
-                        <p>AIと共にPaylessなエコシステムを作る</p>
-                    </div>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>サービス</h4>
-                    <ul>
-                        <li><a href="#services">宿泊事業者向け総合支援</a></li>
-                        <li><a href="#services">LandBase AI Suite</a></li>
-                        <li><a href="#services">IoTソリューション</a></li>
-                        <li><a href="#pricing">料金プラン</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>会社情報</h4>
-                    <ul>
-                        <li><a href="#about">会社概要</a></li>
-                        <li><a href="#about">ミッション・ビジョン</a></li>
-                        <li>プライバシーポリシー</li>
-                        <li>利用規約</li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>お問い合わせ</h4>
-                    <div class="footer-contact">
-                        <div class="contact-item">
-                            <i class="fas fa-phone" aria-hidden="true"></i>
-                            <a href="tel:080-3468-1177">080-3468-1177</a>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-envelope" aria-hidden="true"></i>
-                            <a href="mailto:info@ai-landbase.jp">info@ai-landbase.jp</a>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-                            <span>沖縄県国頭郡今帰仁村湧川 852-2</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2025 AI.LandBase. All rights reserved.</p>
-                <p>沖縄の宿泊業界専門AIテクノロジー企業</p>
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-blob hero-blob-1"></div>
+    <div class="hero-blob hero-blob-2"></div>
+    <div class="hero-blob hero-blob-3"></div>
+    <div class="hero-inner">
+        <div>
+            <div class="hero-eyebrow">沖縄 × AI × 宿泊</div>
+            <h1>
+                テクノロジーで<br>
+                宿泊業に<br>
+                <em>新しい風</em>を
+            </h1>
+            <p class="hero-desc">
+                データに基づく経営判断、AIによる業務自動化、17言語対応コンシェルジュ。
+                沖縄の宿泊事業者のための、やさしく確かなAIパートナー。
+            </p>
+            <div class="hero-actions">
+                <a href="tel:080-3468-1177" class="btn-primary">
+                    <i class="fas fa-phone"></i> 無料相談する
+                </a>
+                <a href="#services" class="btn-text">
+                    サービス詳細 <i class="fas fa-arrow-right"></i>
+                </a>
             </div>
         </div>
-    </footer>
+        <div class="hero-visual">
+            <div class="hero-card-stack">
+                <div class="hero-card hero-card-3">
+                    <div class="card-icon"><i class="fas fa-globe"></i></div>
+                    <div class="card-stat">17</div>
+                    <div class="card-label">言語対応</div>
+                </div>
+                <div class="hero-card hero-card-2">
+                    <div class="card-stat" style="color:#fff">+25%</div>
+                    <div class="card-label">平均収益向上</div>
+                </div>
+                <div class="hero-card hero-card-1">
+                    <div class="card-icon" style="color:var(--blue-bright)"><i class="fas fa-chart-line"></i></div>
+                    <div class="card-stat" style="color:var(--blue)">40%</div>
+                    <div class="card-label">業務効率化</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-    <!-- Back to top button -->
-    <button class="back-to-top" id="backToTop" aria-label="ページトップに戻る">
-        <i class="fas fa-chevron-up" aria-hidden="true"></i>
-    </button>
+<!-- PROBLEMS -->
+<section class="problems" id="problems">
+    <div class="section-inner">
+        <div class="problems-header">
+            <div class="section-eyebrow">課題</div>
+            <h2 class="section-title">宿泊業界が抱える<br>4つの構造課題</h2>
+        </div>
+        <div class="problems-grid">
+            <div class="problem-card">
+                <div class="problem-icon-wrap"><i class="fas fa-users-slash"></i></div>
+                <div>
+                    <h3>深刻な人手不足</h3>
+                    <p>スタッフ採用困難、業務負荷増大によるサービス品質低下</p>
+                    <div class="problem-solution"><i class="fas fa-arrow-right"></i> AI自動化で解決</div>
+                </div>
+            </div>
+            <div class="problem-card">
+                <div class="problem-icon-wrap"><i class="fas fa-chart-line"></i></div>
+                <div>
+                    <h3>データ活用の遅れ</h3>
+                    <p>勘頼みの経営、競合分析不足、収益機会の損失</p>
+                    <div class="problem-solution"><i class="fas fa-arrow-right"></i> AIダッシュボードで可視化</div>
+                </div>
+            </div>
+            <div class="problem-card">
+                <div class="problem-icon-wrap"><i class="fas fa-building"></i></div>
+                <div>
+                    <h3>OTA依存の危険性</h3>
+                    <p>手数料負担増、顧客データ不足、価格競争激化</p>
+                    <div class="problem-solution"><i class="fas fa-arrow-right"></i> 直接予約促進</div>
+                </div>
+            </div>
+            <div class="problem-card">
+                <div class="problem-icon-wrap"><i class="fas fa-calendar-alt"></i></div>
+                <div>
+                    <h3>季節変動への対応</h3>
+                    <p>需給バランス不均衡、価格設定の難しさ、稼働率低下</p>
+                    <div class="problem-solution"><i class="fas fa-arrow-right"></i> AI需要予測</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-    <!-- External JavaScript -->
-    <script src="main.js"></script>
+<!-- SERVICES -->
+<section class="services" id="services">
+    <div class="section-inner">
+        <div class="services-header">
+            <div class="section-eyebrow">サービス</div>
+            <h2 class="section-title">3つのソリューション</h2>
+            <p class="section-desc">宿泊業界に特化した包括的なAI支援で、経営改善を実現します</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-card-top">
+                    <div class="icon"><i class="fas fa-cogs"></i></div>
+                    <h3>宿泊事業者向け<br>総合支援</h3>
+                </div>
+                <div class="service-card-body">
+                    <p>AI分析からオペレーション代行まで、包括的な経営改善</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> AI分析・月次レポート</li>
+                        <li><i class="fas fa-check"></i> Web運営・競合分析</li>
+                        <li><i class="fas fa-check"></i> 清掃・リネン管理代行</li>
+                        <li><i class="fas fa-check"></i> 緊急顧客対応</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="service-card featured">
+                <div class="service-badge">人気</div>
+                <div class="service-card-top">
+                    <div class="icon"><i class="fas fa-microchip"></i></div>
+                    <h3>LandBase<br>AI Suite</h3>
+                </div>
+                <div class="service-card-body">
+                    <p>9つの専門AIを統合したオールインワンプラットフォーム</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> MarketingAI / OperationAI</li>
+                        <li><i class="fas fa-check"></i> AnalyticsAI / OptimaPriceAI</li>
+                        <li><i class="fas fa-check"></i> ConciergeAI（17言語）</li>
+                        <li><i class="fas fa-check"></i> PersonalizeAI</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-card-top">
+                    <div class="icon"><i class="fas fa-wifi"></i></div>
+                    <h3>IoT<br>ソリューション</h3>
+                </div>
+                <div class="service-card-body">
+                    <p>スマートデバイス連携で次世代宿泊体験を提供</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> 生体ウェルネスデータ観測</li>
+                        <li><i class="fas fa-check"></i> AIルームマネジメント</li>
+                        <li><i class="fas fa-check"></i> 環境制御・省エネ</li>
+                        <li><i class="fas fa-check"></i> 異常検知システム</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+    <div class="section-inner">
+        <div class="pricing-header">
+            <div class="section-eyebrow">料金</div>
+            <h2 class="section-title">料金プラン</h2>
+            <p class="section-desc">目的に合わせて選べる、分かりやすい料金体系</p>
+            <div class="toggle-wrap">
+                <div class="pricing-toggle">
+                    <button class="toggle-btn active" data-plan="monthly" onclick="switchPlan('monthly')">月額プラン</button>
+                    <button class="toggle-btn" data-plan="spot" onclick="switchPlan('spot')">スポット発注</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="pricing-grid monthly-section active">
+            <div class="pricing-card">
+                <div class="pricing-card-header">
+                    <div class="pricing-plan-name">スタンダード</div>
+                    <div class="pricing-amount"><span class="yen">¥</span>50,000<span class="period">/月</span></div>
+                    <div class="pricing-target">中規模宿泊施設向け</div>
+                </div>
+                <div class="pricing-card-body">
+                    <ul class="pricing-feature-list">
+                        <li><i class="fas fa-check"></i> AI分析・月次レポート</li>
+                        <li><i class="fas fa-check"></i> Web運営・競合分析</li>
+                        <li><i class="fas fa-check"></i> 月次オンライン面談</li>
+                        <li><i class="fas fa-check"></i> 基本的なAIツール利用</li>
+                    </ul>
+                    <a href="tel:080-3468-1177" class="pricing-cta">相談する</a>
+                </div>
+            </div>
+            <div class="pricing-card featured">
+                <div class="pricing-card-header">
+                    <div class="pricing-plan-name">AI Suite サーバー</div>
+                    <div class="pricing-amount"><span class="yen">¥</span>1,200,000<span class="period"> 買切</span></div>
+                    <div class="pricing-target">大規模宿泊施設向け</div>
+                </div>
+                <div class="pricing-card-body">
+                    <ul class="pricing-feature-list">
+                        <li><i class="fas fa-check"></i> AI Suiteサーバー納品</li>
+                        <li><i class="fas fa-check"></i> 9つの専門AIモジュール</li>
+                        <li><i class="fas fa-check"></i> オンプレミス運用</li>
+                        <li><i class="fas fa-check"></i> 導入トレーニング</li>
+                        <li><i class="fas fa-check"></i> カスタムAI開発</li>
+                    </ul>
+                    <a href="tel:080-3468-1177" class="pricing-cta">相談する</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="spot-section" id="spotSection">
+            <div class="spot-grid">
+                <div class="spot-card">
+                    <h4>清掃代行</h4>
+                    <div class="spot-price">¥1,000<span>/坪</span></div>
+                    <p>プロフェッショナルな清掃</p>
+                </div>
+                <div class="spot-card">
+                    <h4>高品質リネン管理</h4>
+                    <div class="spot-price">¥625<span>/ベッド</span></div>
+                    <p>清潔で快適な寝具の提供</p>
+                </div>
+                <div class="spot-card">
+                    <h4>緊急顧客対応</h4>
+                    <div class="spot-price">¥5,000<span>/回</span></div>
+                    <p>24時間体制の緊急サポート</p>
+                </div>
+                <div class="spot-card">
+                    <h4>特殊清掃</h4>
+                    <div class="spot-price">個別見積</div>
+                    <p>エアコン・プール・外壁等</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+    <div class="section-inner">
+        <div class="section-eyebrow">会社情報</div>
+        <h2 class="section-title">AI.LandBase について</h2>
+        <div class="about-grid">
+            <div class="about-block">
+                <h3>ミッション</h3>
+                <p>沖縄の宿泊事業者にAIテクノロジーの力を届け、データドリブンな経営への転換を支援することで、持続可能な観光産業の発展に貢献する</p>
+                <h3>ビジョン</h3>
+                <p>2030年までに、沖縄北部の全宿泊事業者がAIを活用した戦略的経営を実践し、データと人間の知恵が融合した新しい観光エコシステムのモデル地域となる</p>
+            </div>
+            <div class="company-card">
+                <h4>企業概要</h4>
+                <div class="info-row"><span class="info-label">企業名</span><span class="info-value">AI.LandBase（アイランドベース）</span></div>
+                <div class="info-row"><span class="info-label">代表者</span><span class="info-value">末永 壽蔵</span></div>
+                <div class="info-row"><span class="info-label">設立</span><span class="info-value">2025年6月26日</span></div>
+                <div class="info-row"><span class="info-label">資本金</span><span class="info-value">300万円</span></div>
+                <div class="info-row"><span class="info-label">所在地</span><span class="info-value">沖縄県国頭郡今帰仁村湧川 852-2</span></div>
+                <div class="info-row"><span class="info-label">事業領域</span><span class="info-value">宿泊業界向けAIドリブン経営支援</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="final-cta">
+    <div class="section-inner">
+        <h2>まずは無料相談から</h2>
+        <p>現状の課題をヒアリングし、最適なAIソリューションをご提案します</p>
+        <a href="tel:080-3468-1177" class="cta-btn-white">
+            <i class="fas fa-phone"></i> 080-3468-1177
+        </a>
+        <div class="cta-contact">
+            <div class="cta-contact-item"><i class="fas fa-clock"></i> 平日 10:00-17:00</div>
+            <div class="cta-contact-item"><i class="fas fa-envelope"></i> info@ai-landbase.jp</div>
+            <div class="cta-contact-item"><i class="fas fa-map-marker-alt"></i> 沖縄県国頭郡今帰仁村</div>
+        </div>
+    </div>
+</section>
+
+<footer><p>&copy; 2025 AI.LandBase. All rights reserved.</p></footer>
+
+<script>
+function switchPlan(plan) {
+    document.querySelectorAll('.toggle-btn').forEach(b => b.classList.toggle('active', b.dataset.plan === plan));
+    const m = document.querySelector('.monthly-section');
+    const s = document.querySelector('.spot-section');
+    if (plan === 'monthly') { m.style.display = 'grid'; s.style.display = 'none'; }
+    else { m.style.display = 'none'; s.style.display = 'block'; }
+}
+</script>
 </body>
 </html>
