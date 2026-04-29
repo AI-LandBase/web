@@ -5,10 +5,9 @@ node_modules/
 .next/
 out/
 
-# Production environment (contains secrets)
+# Environment files (contain secrets)
+.env.development
 .env.production
-
-# Local env overrides
 .env.local
 .env.*.local
 

@@ -179,7 +179,7 @@ CLAUDE.md のスタック設定に沿って LP を実装してください。
 ## ディレクトリ構成
 
 ```
-web-lp-workflow/
+web/
 ├── workflow/
 │   ├── README.md              ← この手順書
 │   ├── templates/             ← 各フェーズのテンプレート

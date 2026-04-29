@@ -106,8 +106,8 @@ cat > "$PROJECT_DIR/design/DESIGN.md" <<'DESIGN'
 <!-- 40-page-structure.md の要約 -->
 DESIGN
 
-cat > "$PROJECT_DIR/CLAUDE.md" <<CLAUDE
-# LP Implementation Context — $PROJECT_NAME
+cat > "$PROJECT_DIR/CLAUDE.md" <<'CLAUDE_TEMPLATE'
+# LP Implementation Context — __PROJECT_NAME__
 
 ## Stack
 
@@ -133,13 +133,14 @@ cat > "$PROJECT_DIR/CLAUDE.md" <<CLAUDE
 
 ## Implementation Entry Point
 
-\`\`\`
+```
 > design/handoff/ 以下の仕様を読んで、
 > このファイルのスタック設定に沿って LP を実装してください。
 > まず 50-acceptance-criteria.md を確認し、
 > 各セクションを順番に実装してください。
-\`\`\`
-CLAUDE
+```
+CLAUDE_TEMPLATE
+sed -i '' "s/__PROJECT_NAME__/$PROJECT_NAME/g" "$PROJECT_DIR/CLAUDE.md"
 
 echo ""
 echo "✓ スキャフォールド完了: $PROJECT_DIR"

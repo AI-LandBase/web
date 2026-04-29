@@ -3,11 +3,11 @@ help: ## ヘルプを表示
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
 
 # ==============================================
-# 初期セットアップ用（実行後はこのセクションを削除してください）
+# 初期セットアップ用（初回のみ実行）
 # ==============================================
 
 .PHONY: init
-init: ## 【削除予定】定番パッケージを含むNext.jsアプリケーションを作成
+init: ## 定番パッケージを含むNext.jsアプリケーションを作成（初回のみ実行）
 	@echo "📦 Next.jsアプリケーションを作成します..."
 	@[ -f README.md ] && cp README.md README.md.bak || true
 	@[ -f .env.development ] && cp .env.development .env.development.bak || true

@@ -96,19 +96,31 @@ cd /srv/reverse-proxy/
 make up
 ```
 
-### 7. SSH 秘密鍵のコピー
+### 7. SSH 鍵の設定（リポジトリアクセス用）
 
 devuser が VPS 上から外部リポジトリ等にアクセスする場合に必要です。
 
-**ローカルマシンから実行:**
+> **⚠️ セキュリティ上の注意:** ローカルの秘密鍵をネットワーク経由でコピーするのは推奨されません。VPS 上で新しい鍵ペアを生成し、公開鍵を GitHub 等に登録する方法が安全です。
+
+**推奨: VPS 上で新しい鍵ペアを生成する方法:**
 
 ```bash
+# VPS 上で devuser として実行
+su - devuser
+ssh-keygen -t ed25519 -C "devuser@vps"
+cat ~/.ssh/id_ed25519.pub
+# 表示された公開鍵を GitHub の SSH keys に登録
+```
+
+**代替: ローカルの秘密鍵をコピーする方法（非推奨）:**
+
+```bash
+# ローカルマシンから実行
 scp ~/.ssh/id_ed25519 root@<VPS_IP>:/home/devuser/.ssh/
 ```
 
-**VPS 上で権限を設定:**
-
 ```bash
+# VPS 上で権限を設定
 chmod 600 /home/devuser/.ssh/id_ed25519
 chown devuser:devuser /home/devuser/.ssh/id_ed25519
 ```
