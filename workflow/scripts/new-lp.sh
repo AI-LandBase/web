@@ -52,6 +52,11 @@ if [ $# -lt 1 ]; then
 fi
 
 PROJECT_NAME="$1"
+
+if [[ ! "$PROJECT_NAME" =~ ^[a-zA-Z0-9_-]+$ ]]; then
+  echo "エラー: プロジェクト名は英数字・ハイフン・アンダースコアのみ使用可能です。"
+  exit 1
+fi
 PROJECT_DIR="$PROJECTS_DIR/$PROJECT_NAME"
 
 if [ -d "$PROJECT_DIR" ]; then

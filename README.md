@@ -1,7 +1,10 @@
-# Next.js Boilerplate
+# AI-LandBase
 
-> Next.jsプロジェクトを素早く立ち上げるためのDocker化されたboilerplate
+> LP制作標準ワークフロー + Next.js 15 / Tailwind v4 / Docker 環境
 
+Claude Code / ChatGPT image2 / Claude Design の3ツール連携によるLP制作ワークフローを整備したリポジトリです。
+
+**LP案件の始め方**: `./workflow/scripts/new-lp.sh <project-name>` → [workflow/README.md](workflow/README.md)
 **貢献したい方は**: [CONTRIBUTING.md](CONTRIBUTING.md) を参照してください
 
 ---
