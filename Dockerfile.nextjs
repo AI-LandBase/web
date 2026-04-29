@@ -1,0 +1,100 @@
+# syntax=docker/dockerfile:1
+# check=error=true
+
+# ============================================
+# グローバル ARG - 最初の FROM より前に宣言
+# ============================================
+ARG NODE_VERSION
+
+# ============================================
+# Base ステージ - 最小限のランタイム依存関係
+# ============================================
+FROM node:${NODE_VERSION:-22}-slim AS base
+
+WORKDIR /app
+
+# 実行時に必要な最小限のパッケージをインストール
+RUN apt-get update -qq \
+    && apt-get install -y --no-install-recommends \
+        curl \
+        openssl \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists /var/cache/apt/archives
+
+# ============================================
+# Build-base ステージ - ビルド共通基盤
+# ============================================
+FROM base AS build-base
+
+# ビルドツールをインストール
+RUN apt-get update -qq \
+    && apt-get install -y --no-install-recommends \
+        build-essential \
+        git \
+        python3 \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists /var/cache/apt/archives
+
+# ============================================
+# Development ステージ - ローカル開発環境用
+# ============================================
+FROM build-base AS development
+
+# 開発用ツールを追加インストール
+RUN apt-get update -qq \
+    && apt-get install -y --no-install-recommends \
+        less \
+        vim \
+        postgresql-client \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists /var/cache/apt/archives
+
+# ============================================
+# Production-builder ステージ - アプリケーションビルド用
+# ============================================
+FROM build-base AS production-builder
+
+# package.json と package-lock.json をコピーして依存関係をインストール
+COPY package.json package-lock.json* ./
+RUN npm ci
+
+# アプリケーションコードをコピー
+COPY . .
+
+# Prisma クライアントを生成
+RUN npx prisma generate
+
+# Next.js をビルド（standalone モード）
+RUN npm run build
+
+# ============================================
+# Production ステージ - 最小限の本番実行環境
+# ============================================
+FROM base AS production
+
+ENV NODE_ENV=production
+
+# 非 root ユーザーを作成
+RUN groupadd --system nextjs \
+    && useradd --system --gid nextjs --create-home --shell /bin/bash nextjs
+
+# standalone ビルド成果物をコピー
+COPY --from=production-builder /app/public ./public
+COPY --from=production-builder --chown=nextjs:nextjs /app/.next/standalone ./
+COPY --from=production-builder --chown=nextjs:nextjs /app/.next/static ./.next/static
+
+# Prisma クライアントをコピー（マイグレーション実行用）
+COPY --from=production-builder /app/node_modules/.prisma ./node_modules/.prisma
+COPY --from=production-builder /app/node_modules/@prisma ./node_modules/@prisma
+COPY --from=production-builder /app/prisma ./prisma
+
+USER nextjs
+
+# ポートを公開
+EXPOSE 3000
+
+ENV HOSTNAME="0.0.0.0"
+ENV PORT=3000
+
+# 本番モードで Next.js サーバーを起動
+CMD ["node", "server.js"]
