@@ -140,7 +140,11 @@ cat > "$PROJECT_DIR/CLAUDE.md" <<'CLAUDE_TEMPLATE'
 > 各セクションを順番に実装してください。
 ```
 CLAUDE_TEMPLATE
-sed -i '' "s/__PROJECT_NAME__/$PROJECT_NAME/g" "$PROJECT_DIR/CLAUDE.md"
+if sed --version 2>/dev/null | grep -q GNU; then
+  sed -i "s/__PROJECT_NAME__/$PROJECT_NAME/g" "$PROJECT_DIR/CLAUDE.md"
+else
+  sed -i '' "s/__PROJECT_NAME__/$PROJECT_NAME/g" "$PROJECT_DIR/CLAUDE.md"
+fi
 
 echo ""
 echo "✓ スキャフォールド完了: $PROJECT_DIR"

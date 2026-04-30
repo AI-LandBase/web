@@ -79,14 +79,14 @@ RUN groupadd --system nextjs \
     && useradd --system --gid nextjs --create-home --shell /bin/bash nextjs
 
 # standalone ビルド成果物をコピー
-COPY --from=production-builder /app/public ./public
+COPY --from=production-builder --chown=nextjs:nextjs /app/public ./public
 COPY --from=production-builder --chown=nextjs:nextjs /app/.next/standalone ./
 COPY --from=production-builder --chown=nextjs:nextjs /app/.next/static ./.next/static
 
 # Prisma クライアントをコピー（マイグレーション実行用）
-COPY --from=production-builder /app/node_modules/.prisma ./node_modules/.prisma
-COPY --from=production-builder /app/node_modules/@prisma ./node_modules/@prisma
-COPY --from=production-builder /app/prisma ./prisma
+COPY --from=production-builder --chown=nextjs:nextjs /app/node_modules/.prisma ./node_modules/.prisma
+COPY --from=production-builder --chown=nextjs:nextjs /app/node_modules/@prisma ./node_modules/@prisma
+COPY --from=production-builder --chown=nextjs:nextjs /app/prisma ./prisma
 
 USER nextjs
 
