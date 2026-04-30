@@ -183,6 +183,17 @@ caddy (reverse-proxy/, :80/:443) →[web-proxy-net]→ nextjsapp (:3000) →[int
 - 実体ファイル: `.env.development` / `.env.production`（`.gitignore` で除外、`cp .env.*.example .env.*` で作成）
 - `-f` + `--env-file` で明示的に指定する設計
 
+#### Production 必須環境変数
+
+| 変数 | 説明 | 生成方法 |
+|------|------|---------|
+| `NEXTAUTH_SECRET` | NextAuth セッション暗号化キー | `make prod-secret` |
+| `NEXTAUTH_URL` | 本番環境の公開URL | 手動設定（例: `https://yourdomain.com`） |
+| `POSTGRES_PASSWORD` | PostgreSQL パスワード | 手動設定（強力なパスワードに変更） |
+| `DATABASE_URL` | Prisma 接続文字列 | `POSTGRES_*` の値から構成 |
+
+未設定の場合、`NEXTAUTH_SECRET` は起動時にエラーになります。
+
 詳細は [README.md のアーキテクチャセクション](README.md#アーキテクチャ) を参照してください。
 
 ---
