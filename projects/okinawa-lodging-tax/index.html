@@ -598,5 +598,69 @@
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   </script>
 
+  <!-- Inquiry form submission -->
+  <script>
+    (function() {
+      var API_URL = '/api/inquiries';
+      var form = document.getElementById('inquiry-form');
+      var errorsDiv = document.getElementById('inquiry-errors');
+      var thanksDiv = document.getElementById('inquiry-thanks');
+      if (!form || !errorsDiv || !thanksDiv) return;
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        errorsDiv.classList.add('hidden');
+        errorsDiv.textContent = '';
+
+        var formData = new FormData(form);
+        var inquiry = {};
+        formData.forEach(function(value, key) { inquiry[key] = value; });
+
+        var submitBtn = form.querySelector('button[type="submit"]');
+        var originalText = submitBtn ? submitBtn.textContent : '';
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.textContent = '送信中...';
+        }
+
+        fetch(API_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ inquiry: inquiry })
+        })
+        .then(function(res) {
+          return res.json().then(function(data) { return { ok: res.ok, data: data }; });
+        })
+        .then(function(result) {
+          if (result.ok) {
+            form.classList.add('hidden');
+            thanksDiv.classList.remove('hidden');
+          } else {
+            errorsDiv.textContent = '';
+            var errors = result.data && result.data.errors ? result.data.errors : ['送信に失敗しました'];
+            errors.forEach(function(msg) {
+              var p = document.createElement('p');
+              p.textContent = msg;
+              errorsDiv.appendChild(p);
+            });
+            errorsDiv.classList.remove('hidden');
+            if (submitBtn) {
+              submitBtn.disabled = false;
+              submitBtn.textContent = originalText;
+            }
+          }
+        })
+        .catch(function() {
+          errorsDiv.textContent = '送信に失敗しました。時間をおいて再度お試しください。';
+          errorsDiv.classList.remove('hidden');
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalText;
+          }
+        });
+      });
+    })();
+  </script>
+
 </body>
 </html>

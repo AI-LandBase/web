@@ -15,3 +15,16 @@ model User {
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
 }
+
+model Inquiry {
+  id           Int      @id @default(autoincrement())
+  facilityName String
+  contactName  String
+  email        String
+  phone        String?
+  facilityType String?
+  hasPc        String?
+  message      String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
