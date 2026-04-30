@@ -16,6 +16,16 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    if (data.website) {
+      return NextResponse.json(
+        {
+          message:
+            "お問い合わせありがとうございます。内容を確認の上、ご連絡いたします。",
+        },
+        { status: 201 }
+      );
+    }
+
     const errors: string[] = [];
 
     if (!data.facility_name?.trim()) {
