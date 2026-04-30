@@ -9,6 +9,7 @@ const nextConfig: NextConfig = {
         headers: [
           {
             key: "Access-Control-Allow-Origin",
+            // ローカル/ステージング: 未設定で "*" 許容、本番: LPオリジンを指定
             value: process.env.ALLOWED_ORIGIN ?? "*",
           },
           { key: "Access-Control-Allow-Methods", value: "POST, OPTIONS" },
