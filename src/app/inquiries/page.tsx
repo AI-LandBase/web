@@ -1,13 +1,6 @@
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
-
-const FACILITY_TYPE_LABELS: Record<string, string> = {
-  minpaku: "民泊（住宅宿泊事業）",
-  simple_lodging: "簡易宿所",
-  ryokan: "旅館",
-  hotel: "ホテル",
-  other: "その他",
-};
+import { FACILITY_TYPE_LABELS } from "@/lib/inquiry-constants";
 
 export default async function InquiriesPage() {
   const inquiries = await prisma.inquiry.findMany({

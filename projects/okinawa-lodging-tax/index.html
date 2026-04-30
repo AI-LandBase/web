@@ -605,6 +605,7 @@
       var form = document.getElementById('inquiry-form');
       var errorsDiv = document.getElementById('inquiry-errors');
       var thanksDiv = document.getElementById('inquiry-thanks');
+      if (!form || !errorsDiv || !thanksDiv) return;
 
       form.addEventListener('submit', function(e) {
         e.preventDefault();

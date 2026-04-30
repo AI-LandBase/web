@@ -1,21 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { prisma } from "@/lib/prisma";
-
-const FACILITY_TYPE_LABELS: Record<string, string> = {
-  minpaku: "民泊（住宅宿泊事業）",
-  simple_lodging: "簡易宿所",
-  ryokan: "旅館",
-  hotel: "ホテル",
-  other: "その他",
-};
-
-const HAS_PC_LABELS: Record<string, string> = {
-  mac: "はい（Mac）",
-  windows: "はい（Windows）",
-  other_pc: "はい（その他）",
-  no: "いいえ",
-};
+import { FACILITY_TYPE_LABELS, HAS_PC_LABELS } from "@/lib/inquiry-constants";
 
 export default async function InquiryDetailPage({
   params,
@@ -23,8 +9,11 @@ export default async function InquiryDetailPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
+  const numericId = Number(id);
+  if (isNaN(numericId)) notFound();
+
   const inquiry = await prisma.inquiry.findUnique({
-    where: { id: Number(id) },
+    where: { id: numericId },
   });
 
   if (!inquiry) notFound();
