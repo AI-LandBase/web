@@ -485,7 +485,7 @@ make prod-deploy
 - **`public/lp/` は配信用の生成物**。直接編集しない
 - 編集後は `make lp-sync` で `projects/` → `public/lp/` にコピーする
 - LP の URL パスは `/lp/{project-name}/` で統一する
-- フォーム送信先は同一ドメインの `/api/inquiries` を使用（CORS 不要）
+- フォーム送信先は shukuhakuzei-biz（Rails API）の `https://biz.ai-landbase.jp/api/inquiries` を使用
 
 ---
 
