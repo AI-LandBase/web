@@ -513,9 +513,6 @@
       </div>
       <form id="inquiry-form" method="POST" class="reveal space-y-5" novalidate>
         <div id="inquiry-errors" class="hidden rounded-xl border border-red-400/50 bg-red-900/30 p-4 text-sm text-red-200"></div>
-        <div style="position:absolute;left:-9999px;" aria-hidden="true">
-          <input type="text" name="website" tabindex="-1" autocomplete="off">
-        </div>
         <div class="grid md:grid-cols-2 gap-5">
           <div>
             <label for="facility-name" class="block text-sm font-medium text-ocean-300 mb-2">施設名 <span class="text-coral-400">*</span></label>
@@ -610,7 +607,7 @@
   <!-- Inquiry form submission -->
   <script>
     (function() {
-      var API_URL = '/api/inquiries';
+      var API_URL = 'https://biz.ai-landbase.jp/api/inquiries';
       var form = document.getElementById('inquiry-form');
       var errorsDiv = document.getElementById('inquiry-errors');
       var thanksDiv = document.getElementById('inquiry-thanks');
