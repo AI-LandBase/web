@@ -33,3 +33,5 @@ prisma/*.db
 projects/*/mockups/*.png
 projects/*/mockups/*.jpg
 !projects/*/mockups/.gitkeep
+
+/src/generated/prisma
