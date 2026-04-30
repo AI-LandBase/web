@@ -479,6 +479,14 @@ make prod-deploy
 
 **注意**: `make init` 実行後、カレントディレクトリに完全なNext.jsアプリケーション構造が作成されます。
 
+### LP 管理ルール
+
+- **`projects/` が編集対象（ソース）**。LP の修正・更新は必ず `projects/{name}/` で行う
+- **`public/lp/` は配信用の生成物**。直接編集しない
+- 編集後は `make lp-sync` で `projects/` → `public/lp/` にコピーする
+- LP の URL パスは `/lp/{project-name}/` で統一する
+- フォーム送信先は同一ドメインの `/api/inquiries` を使用（CORS 不要）
+
 ---
 
 ## トラブルシューティング
