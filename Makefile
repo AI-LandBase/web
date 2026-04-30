@@ -169,7 +169,7 @@ lp-sync: ## projects/ のLP成果物を public/ にコピー（配信用）
 # ==============================================
 
 .PHONY: prod-deploy
-prod-deploy: ## 本番環境をデプロイ（ビルド→再作成→マイグレーション）
+prod-deploy: lp-sync ## 本番環境をデプロイ（LP同期→ビルド→再作成→マイグレーション）
 	docker compose -f compose.production.yaml --env-file .env.production build --no-cache
 	docker compose -f compose.production.yaml --env-file .env.production down
 	docker compose -f compose.production.yaml --env-file .env.production up -d
