@@ -5,6 +5,7 @@ import { FACILITY_TYPE_LABELS } from "@/lib/inquiry-constants";
 export default async function InquiriesPage() {
   const inquiries = await prisma.inquiry.findMany({
     orderBy: { createdAt: "desc" },
+    take: 100,
   });
 
   return (
@@ -30,10 +31,13 @@ export default async function InquiriesPage() {
               {inquiries.map((inquiry) => (
                 <tr key={inquiry.id} className="border-b border-gray-200">
                   <td className="py-3 px-2">
-                    {inquiry.createdAt.toLocaleDateString("ja-JP")}{" "}
+                    {inquiry.createdAt.toLocaleDateString("ja-JP", {
+                      timeZone: "Asia/Tokyo",
+                    })}{" "}
                     {inquiry.createdAt.toLocaleTimeString("ja-JP", {
                       hour: "2-digit",
                       minute: "2-digit",
+                      timeZone: "Asia/Tokyo",
                     })}
                   </td>
                   <td className="py-3 px-2">{inquiry.facilityName}</td>

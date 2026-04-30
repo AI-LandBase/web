@@ -617,9 +617,11 @@
         formData.forEach(function(value, key) { inquiry[key] = value; });
 
         var submitBtn = form.querySelector('button[type="submit"]');
-        var originalText = submitBtn.textContent;
-        submitBtn.disabled = true;
-        submitBtn.textContent = '送信中...';
+        var originalText = submitBtn ? submitBtn.textContent : '';
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.textContent = '送信中...';
+        }
 
         fetch(API_URL, {
           method: 'POST',
@@ -635,21 +637,26 @@
             thanksDiv.classList.remove('hidden');
           } else {
             errorsDiv.textContent = '';
-            result.data.errors.forEach(function(msg) {
+            var errors = result.data && result.data.errors ? result.data.errors : ['送信に失敗しました'];
+            errors.forEach(function(msg) {
               var p = document.createElement('p');
               p.textContent = msg;
               errorsDiv.appendChild(p);
             });
             errorsDiv.classList.remove('hidden');
-            submitBtn.disabled = false;
-            submitBtn.textContent = originalText;
+            if (submitBtn) {
+              submitBtn.disabled = false;
+              submitBtn.textContent = originalText;
+            }
           }
         })
         .catch(function() {
           errorsDiv.textContent = '送信に失敗しました。時間をおいて再度お試しください。';
           errorsDiv.classList.remove('hidden');
-          submitBtn.disabled = false;
-          submitBtn.textContent = originalText;
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalText;
+          }
         });
       });
     })();

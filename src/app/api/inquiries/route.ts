@@ -2,10 +2,19 @@ import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { FACILITY_TYPES, HAS_PC_OPTIONS } from "@/lib/inquiry-constants";
 
+const MESSAGE_MAX_LENGTH = 5000;
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const data = body.inquiry ?? body;
+    const data = body.inquiry;
+
+    if (!data) {
+      return NextResponse.json(
+        { errors: ["リクエスト形式が正しくありません"] },
+        { status: 422 }
+      );
+    }
 
     const errors: string[] = [];
 
@@ -25,6 +34,13 @@ export async function POST(request: NextRequest) {
     }
     if (data.has_pc && !HAS_PC_OPTIONS.includes(data.has_pc)) {
       errors.push("PC保有状況が正しくありません");
+    }
+    if (
+      data.message &&
+      typeof data.message === "string" &&
+      data.message.length > MESSAGE_MAX_LENGTH
+    ) {
+      errors.push(`ご相談内容は${MESSAGE_MAX_LENGTH}文字以内で入力してください`);
     }
 
     if (errors.length > 0) {
@@ -51,21 +67,11 @@ export async function POST(request: NextRequest) {
       },
       { status: 201 }
     );
-  } catch {
+  } catch (e) {
+    console.error("[POST /api/inquiries]", e);
     return NextResponse.json(
       { errors: ["サーバーエラーが発生しました"] },
       { status: 500 }
     );
   }
-}
-
-export async function OPTIONS() {
-  return new NextResponse(null, {
-    status: 204,
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "POST, OPTIONS",
-      "Access-Control-Allow-Headers": "Content-Type",
-    },
-  });
 }

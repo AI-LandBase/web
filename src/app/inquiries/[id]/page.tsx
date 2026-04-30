@@ -32,11 +32,14 @@ export default async function InquiryDetailPage({
           <div>
             <dt className="font-medium text-gray-500">受信日時</dt>
             <dd className="mt-1">
-              {inquiry.createdAt.toLocaleDateString("ja-JP")}
+              {inquiry.createdAt.toLocaleDateString("ja-JP", {
+                timeZone: "Asia/Tokyo",
+              })}
               {" "}
               {inquiry.createdAt.toLocaleTimeString("ja-JP", {
                 hour: "2-digit",
                 minute: "2-digit",
+                timeZone: "Asia/Tokyo",
               })}
             </dd>
           </div>
