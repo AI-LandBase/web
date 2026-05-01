@@ -86,6 +86,7 @@ COPY --from=production-builder --chown=nextjs:nextjs /app/.next/static ./.next/s
 # Prisma クライアントをコピー（マイグレーション実行用）
 COPY --from=production-builder --chown=nextjs:nextjs /app/node_modules/.prisma ./node_modules/.prisma
 COPY --from=production-builder --chown=nextjs:nextjs /app/node_modules/@prisma ./node_modules/@prisma
+COPY --from=production-builder --chown=nextjs:nextjs /app/node_modules/prisma ./node_modules/prisma
 COPY --from=production-builder --chown=nextjs:nextjs /app/prisma ./prisma
 COPY --from=production-builder --chown=nextjs:nextjs /app/prisma.config.ts ./prisma.config.ts
 
