@@ -1,5 +1,3 @@
-# ドメイン名とリバースプロキシ先を本番環境に合わせて変更してください
-# リバースプロキシ先は compose.production.yaml の nextjsapp サービス名を指定します
-yourdomain.com {
+lodging-tax.ai-landbase.jp {
 	reverse_proxy nextjsapp:3000
 }
