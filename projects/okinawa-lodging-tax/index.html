@@ -652,7 +652,7 @@
         fetch(API_URL, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ inquiry: inquiry })
+          body: JSON.stringify(inquiry)
         })
         .then(function(res) {
           return res.json().then(function(data) { return { ok: res.ok, data: data }; });
