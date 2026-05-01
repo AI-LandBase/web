@@ -173,7 +173,7 @@ prod-deploy: lp-sync ## 本番環境をデプロイ（LP同期→ビルド→再
 	docker compose -f compose.production.yaml --env-file .env.production build --no-cache
 	docker compose -f compose.production.yaml --env-file .env.production down
 	docker compose -f compose.production.yaml --env-file .env.production up -d
-	docker compose -f compose.production.yaml --env-file .env.production exec nextjsapp node node_modules/prisma/build/index.js migrate deploy
+	docker compose -f compose.production.yaml --env-file .env.production exec nextjsapp npx prisma migrate deploy
 	@echo "✅ デプロイが完了しました"
 
 .PHONY: prod-logs
