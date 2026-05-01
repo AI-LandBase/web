@@ -1,3 +1,16 @@
 lodging-tax.ai-landbase.jp {
-	reverse_proxy nextjsapp:3000
+	@lp-no-slash path_regexp lp ^/lp/([^/]+)$
+	handle @lp-no-slash {
+		redir {uri}/ permanent
+	}
+
+	@lp-with-slash path_regexp lpdir ^/lp/([^/]+)/$
+	handle @lp-with-slash {
+		rewrite * {re.lpdir.0}index.html
+		reverse_proxy nextjsapp:3000
+	}
+
+	handle {
+		reverse_proxy nextjsapp:3000
+	}
 }
