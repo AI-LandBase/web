@@ -13,5 +13,15 @@ else
   echo "$CURRENT_HASH" > "$HASH_FILE"
 fi
 
-npx prisma generate
+PRISMA_HASH_FILE="/app/node_modules/.prisma-schema-hash"
+PRISMA_CURRENT_HASH=$(md5sum /app/prisma/schema.prisma | cut -d' ' -f1)
+
+if [ -f "$PRISMA_HASH_FILE" ] && [ "$(cat "$PRISMA_HASH_FILE")" = "$PRISMA_CURRENT_HASH" ]; then
+  echo "📦 Prisma スキーマに変更なし、prisma generate をスキップ"
+else
+  echo "📦 Prisma スキーマが変更されています、prisma generate を実行..."
+  npx prisma generate
+  echo "$PRISMA_CURRENT_HASH" > "$PRISMA_HASH_FILE"
+fi
+
 exec npm run dev
