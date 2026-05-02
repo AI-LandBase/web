@@ -22,7 +22,7 @@ services:
       target: development
       args:
         NODE_VERSION: ${NODE_VERSION}
-    command: bash -c "npm install && npx prisma generate && npm run dev"
+    command: bash /app/docker/entrypoint.sh
     volumes:
       - .:/app
       - node_modules:/app/node_modules
