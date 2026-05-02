@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
 
+# node_modules 内に保存することで、ボリューム削除時にハッシュも消え再インストールが走る
 HASH_FILE="/app/node_modules/.package-lock-hash"
 CURRENT_HASH=$(md5sum /app/package-lock.json | cut -d' ' -f1)
 
