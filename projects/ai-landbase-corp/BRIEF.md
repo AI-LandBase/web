@@ -145,8 +145,9 @@ AI と共に Payless なエコシステムを作る
 
 ### 確定事項
 - **ロゴ**: 既存ロゴを継続使用
-  - ローカル: `projects/ai-landbase-v1/logo.png`（v1 アーカイブから流用）
+  - ローカル: `public/logo/logo.png`（Drive 原本、1024x1024 RGBA PNG）
   - 原本: [Drive](https://drive.google.com/uc?export=view&id=11zxS-CXtXcRDu8lznBwdCdqGaZVPSqho)
+  - 命名規約・バリエーション一覧: `public/logo/README.md`
 - **トーン方向性（出発点）**:
   - 誠実・透明性（コアバリュー 7）
   - 先進性とデータドリブン（コアバリュー 1, 2）
