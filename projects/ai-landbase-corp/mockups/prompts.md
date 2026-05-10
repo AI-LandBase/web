@@ -338,7 +338,7 @@ Phase 3 コピーから引用（`copy/services.md`）:
 
 [Plan Comparison - 3 column table/cards]
   Header row: スタンダード | プロフェッショナル | AI Suite Server
-  Price row (LARGEST, BOLDEST): 月額 5 万円 | 個別見積 | ¥1,965,000
+  Price row (LARGEST, BOLDEST): 月額 5 万円 | 個別見積 | ¥1,965,000（税別・一式）
   Features rows: 形態, こんな方に, AI Suite, 面談・サポート, 主な対象業種
   CTA button below
 
