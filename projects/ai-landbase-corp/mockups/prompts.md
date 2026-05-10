@@ -99,7 +99,7 @@ Phase 3 コピーから引用（`copy/top.md`）:
 
 [Section 3: サービス概要 - 3 cards]
   Card: Plan name + Price (bold, largest) + Description + Link
-  スタンダード ¥50,000/月 | プロフェッショナル 個別見積 | AI Suite Server ¥1,965,000
+  スタンダード 月額 5 万円 | プロフェッショナル 個別見積 | AI Suite Server ¥1,965,000
 
 [Section 4: 強み・差別化 - 3 columns]
   Icon + Heading + Description × 3
