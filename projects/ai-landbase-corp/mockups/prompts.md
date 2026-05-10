@@ -99,7 +99,7 @@ Phase 3 コピーから引用（`copy/top.md`）:
 
 [Section 3: サービス概要 - 3 cards]
   Card: Plan name + Price (bold, largest) + Description + Link
-  スタンダード 月額 5 万円 | プロフェッショナル 個別見積 | AI Suite Server ¥1,965,000
+  スタンダード 月額 5 万円 | プロフェッショナル 個別見積 | AI Suite Server ¥1,965,000（税別・一式）
 
 [Section 4: 強み・差別化 - 3 columns]
   Icon + Heading + Description × 3
@@ -192,7 +192,7 @@ Page structure (top to bottom):
 1. STICKY HEADER: Logo "AI.LandBase" left, nav links "サービス" "会社案内" center-right, CTA button "お問い合わせ" far right
 2. HERO (full-bleed background): Left-aligned headline "沖縄の観光業に、AI という伴走者を。" with 3-line subcopy below, blue CTA button "メールで相談する", subtle text "どんなご相談でもお待ちしています". Right side: abstract visual placeholder suggesting Okinawa nature/hospitality
 3. PAIN POINTS section: Heading "こんな課題を抱えていませんか？" with 3 columns, each with icon + title ("人手不足" / "データが活かせない" / "季節による売上の波") + 2-line description
-4. SERVICE OVERVIEW: Heading "あなたの経営に合うプランがあります" with 3 cards showing plan name + PRICE IN BOLD LARGEST ("月額 5 万円" / "個別見積" / "¥1,965,000") + description + link "サービスの詳細を見る →"
+4. SERVICE OVERVIEW: Heading "あなたの経営に合うプランがあります" with 3 cards showing plan name + PRICE IN BOLD LARGEST ("月額 5 万円" / "個別見積" / "¥1,965,000（税別・一式）") + description + link "サービスの詳細を見る →". "個別見積" should be displayed as prominently as the numeric prices (same font size and weight).
 5. DIFFERENTIATORS: Heading "AI.LandBase が選ばれる理由" with 3 columns, icon + title + description ("価格をすべて公開しています" / "沖縄県北部に拠点を置いています" / "システム導入だけで終わりません")
 6. PROOF section: Heading "私たちが最初のユーザーです" with text left, photo placeholder right (labeled "Ikigai Stay"), link "会社案内を見る →"
 7. CTA section (full-width background): Heading "まずは、ご相談からはじめませんか" with 3 mailto buttons
@@ -264,7 +264,7 @@ CTA buttons:       min 44px tap target height
 
 ### 7. Exact in-image text
 
-（プロンプト 1 と同一）
+（プロンプト 1 と同一。ただしヒーロー subcopy は above the fold 内に収まる範囲で短縮可）
 
 ### 8. Constraints
 
@@ -452,7 +452,7 @@ This is the /services page showing all plans, pricing, and the AI Suite tool cat
 Page structure (top to bottom):
 1. STICKY HEADER: Same as top page (Logo, nav, CTA button)
 2. PAGE HERO (subtle background): Title "サービス" + 2-line lead text about AI tools and plans
-3. PLAN COMPARISON TABLE (3 columns): Headers "スタンダード" / "プロフェッショナル" / "AI Suite Server". PRICES MUST BE THE LARGEST, BOLDEST ELEMENT: "月額 5 万円" / "個別見積" / "¥1,965,000（税別・一式）". Rows for 形態, こんな方に, AI Suite, 面談・サポート, 主な対象業種. CTA button below.
+3. PLAN COMPARISON TABLE (3 columns): Headers "スタンダード" / "プロフェッショナル" / "AI Suite Server". PRICES MUST BE THE LARGEST, BOLDEST ELEMENT: "月額 5 万円" / "個別見積" / "¥1,965,000（税別・一式）". "個別見積" should be displayed as prominently as the numeric prices (same font size and weight). Rows for 形態, こんな方に, AI Suite, 面談・サポート, 主な対象業種. CTA button below.
 4. STANDARD PLAN DETAIL: "スタンダードプラン — 月額 5 万円", description, 4-item service list, target industries
 5. PROFESSIONAL PLAN DETAIL: "プロフェッショナルプラン — 個別見積", description, 6-item service list
 6. AI SUITE SERVER PLAN DETAIL: "AI Suite Server プラン — ¥1,965,000（税別・一式）", description, 5 included items, 3 use cases (宿泊税対応/客室管理/経理自動化), subsidy note (subtle, not "free"), LP link "宿泊税対応の詳細はこちら →", CTA button
