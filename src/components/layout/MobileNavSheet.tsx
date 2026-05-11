@@ -1,22 +1,41 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { X } from "lucide-react";
 import Link from "next/link";
 import { MailtoButton } from "@/components/cta/MailtoButton";
+import { NAV_ITEMS } from "@/lib/navigation";
 
 type MobileNavSheetProps = {
   open: boolean;
   onClose: () => void;
 };
 
-const NAV_ITEMS = [
-  { label: "サービス", href: "/services" },
-  { label: "会社案内", href: "/about" },
-];
-
 export function MobileNavSheet({ open, onClose }: MobileNavSheetProps) {
+  const sheetRef = useRef<HTMLDivElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
+
+  const trapFocus = useCallback((e: KeyboardEvent) => {
+    if (e.key !== "Tab") return;
+    const sheet = sheetRef.current;
+    if (!sheet) return;
+
+    const focusable = sheet.querySelectorAll<HTMLElement>(
+      'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
+    );
+    if (focusable.length === 0) return;
+
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  }, []);
 
   useEffect(() => {
     if (!open) return;
@@ -25,6 +44,7 @@ export function MobileNavSheet({ open, onClose }: MobileNavSheetProps) {
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
+      trapFocus(e);
     };
 
     document.addEventListener("keydown", handleKeyDown);
@@ -34,12 +54,14 @@ export function MobileNavSheet({ open, onClose }: MobileNavSheetProps) {
       document.removeEventListener("keydown", handleKeyDown);
       document.body.style.overflow = "";
     };
-  }, [open, onClose]);
+  }, [open, onClose, trapFocus]);
 
   if (!open) return null;
 
   return (
     <div
+      ref={sheetRef}
+      id="mobile-nav"
       className="fixed inset-0 z-50 bg-paper-pure"
       role="dialog"
       aria-modal="true"

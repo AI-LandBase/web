@@ -1,9 +1,7 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import { Logo } from "@/components/brand/Logo";
 import { MailtoButton } from "@/components/cta/MailtoButton";
 import { Container } from "@/components/primitives/Container";
+import { EmailText } from "./EmailText";
 
 type SitemapLink = {
   label: string;
@@ -41,20 +39,6 @@ const SITEMAP: SitemapSection[] = [
     ],
   },
 ];
-
-function EmailText() {
-  const [email, setEmail] = useState<string | null>(null);
-
-  useEffect(() => {
-    setEmail(`${"info"}@${"ai-landbase.jp"}`);
-  }, []);
-
-  if (!email) return null;
-
-  return (
-    <p className="mt-2 text-sm text-ink-200">{email}</p>
-  );
-}
 
 export function Footer() {
   const year = new Date().getFullYear();

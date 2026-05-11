@@ -10,6 +10,10 @@ type LogoProps = {
 
 const HEIGHT = { sm: 24, md: 32, lg: 40 };
 
+// v1: inverted SVG 未作成のため全 variant で logo.png を使用。
+// logo-inverted.svg が用意されたら SRC_MAP に追加し CSS filter を使わずアセットで切り替える。
+const SRC = "/logo/logo.png";
+
 export function Logo({
   variant = "default",
   size = "md",
@@ -17,18 +21,16 @@ export function Logo({
   ariaLabel = "AI.LandBase",
 }: LogoProps) {
   const h = HEIGHT[size];
-  const src =
-    variant === "inverted" ? "/logo/logo.png" : "/logo/logo.png";
 
   const img = (
     <Image
-      src={src}
+      src={SRC}
       alt={ariaLabel}
       height={h}
       width={Math.round(h * 4.4)}
       priority
-      className={variant === "inverted" ? "brightness-0 invert" : ""}
       style={{ height: `${h}px`, width: "auto" }}
+      data-variant={variant}
     />
   );
 

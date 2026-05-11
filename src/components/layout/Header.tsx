@@ -6,11 +6,7 @@ import { Menu } from "lucide-react";
 import { Logo } from "@/components/brand/Logo";
 import { MailtoButton } from "@/components/cta/MailtoButton";
 import { MobileNavSheet } from "./MobileNavSheet";
-
-const NAV_ITEMS = [
-  { label: "サービス", href: "/services" },
-  { label: "会社案内", href: "/about" },
-];
+import { NAV_ITEMS } from "@/lib/navigation";
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
