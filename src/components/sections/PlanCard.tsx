@@ -10,10 +10,16 @@ type PlanCardProps = {
   href: string;
 };
 
-const ACCENT = {
-  standard: "text-plan-standard border-t-plan-standard",
-  professional: "text-plan-professional border-t-plan-professional",
-  server: "text-plan-server border-t-plan-server",
+const ACCENT_BORDER = {
+  standard: "border-t-plan-standard",
+  professional: "border-t-plan-professional",
+  server: "border-t-plan-server",
+} as const;
+
+const ACCENT_TEXT = {
+  standard: "text-plan-standard",
+  professional: "text-plan-professional",
+  server: "text-plan-server",
 } as const;
 
 export function PlanCard({
@@ -29,17 +35,10 @@ export function PlanCard({
       className={cn(
         "flex flex-col rounded-lg border border-ink-200 bg-paper-pure p-6",
         "border-t-4 shadow-sm transition-shadow hover:shadow-md",
-        ACCENT[variant],
+        ACCENT_BORDER[variant],
       )}
     >
-      <p
-        className={cn(
-          "text-sm font-bold",
-          variant === "standard" && "text-plan-standard",
-          variant === "professional" && "text-plan-professional",
-          variant === "server" && "text-plan-server",
-        )}
-      >
+      <p className={cn("text-sm font-bold", ACCENT_TEXT[variant])}>
         {name}
       </p>
       <p className="mt-2 text-2xl font-bold text-ink-900">

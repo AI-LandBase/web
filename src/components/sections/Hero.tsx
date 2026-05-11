@@ -18,7 +18,7 @@ type HeroProps = {
 export function Hero({ variant, headline, lead, imageSrc, cta }: HeroProps) {
   if (variant === "media") {
     return (
-      <section className="relative min-h-[540px] md:min-h-[640px]">
+      <section className="relative">
         {imageSrc ? (
           <Image
             src={imageSrc}

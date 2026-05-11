@@ -91,7 +91,7 @@ export default function Home() {
         <SectionHeading title="こんな課題を抱えていませんか？" />
         <ul
           role="list"
-          className="mt-10 grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-10"
+          className="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-10"
         >
           {PROBLEMS.map((item) => (
             <IconCard key={item.title} {...item} />
@@ -102,7 +102,7 @@ export default function Home() {
       {/* 3. Plans */}
       <Section variant="alt">
         <SectionHeading title="あなたの経営に合うプランがあります" />
-        <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
           {PLANS.map((plan) => (
             <PlanCard key={plan.variant} {...plan} />
           ))}
@@ -114,7 +114,7 @@ export default function Home() {
         <SectionHeading title="AI.LandBase が選ばれる理由" />
         <ul
           role="list"
-          className="mt-10 grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-10"
+          className="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-10"
         >
           {REASONS.map((item) => (
             <IconCard key={item.title} {...item} />
