@@ -1,21 +1,9 @@
 import { Check } from "lucide-react";
 import { cn } from "@/lib/cn";
 import { MailtoButton } from "@/components/cta/MailtoButton";
+import type { PlanData } from "./_data";
 
-type DetailedPlanCardProps = {
-  id: string;
-  variant: "standard" | "professional" | "server";
-  name: string;
-  priceLabel: string;
-  priceNote?: string;
-  description: string;
-  features: readonly string[];
-  targetIndustry: string;
-  subject: string;
-  useCases?: readonly string[];
-  note?: string;
-  externalLink?: { label: string; href: string };
-};
+type DetailedPlanCardProps = Omit<PlanData, "shortName" | "comparison">;
 
 const ACCENT_TEXT = {
   standard: "text-plan-standard",

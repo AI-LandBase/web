@@ -1,68 +1,35 @@
 import { cn } from "@/lib/cn";
+import { PLANS } from "./_data";
+import type { PlanVariant } from "./_data";
 
-type PlanColumn = {
-  name: string;
-  variant: "standard" | "professional" | "server";
-};
-
-const PLANS: PlanColumn[] = [
-  { name: "スタンダード", variant: "standard" },
-  { name: "プロフェッショナル", variant: "professional" },
-  { name: "AI Suite Server", variant: "server" },
-];
-
-const HEADER_COLOR = {
+const HEADER_COLOR: Record<PlanVariant, string> = {
   standard: "bg-plan-standard-soft text-plan-standard",
   professional: "bg-plan-professional-soft text-plan-professional",
   server: "bg-plan-server-soft text-plan-server",
-} as const;
+};
 
-const ROWS = [
-  {
-    label: "料金",
-    values: ["月額 5 万円", "個別見積", "¥1,965,000（税別・一式）"],
+function priceDisplay(plan: (typeof PLANS)[number]): string {
+  const note = plan.priceNote ? plan.priceNote : "";
+  return `${plan.priceLabel}${note}`;
+}
+
+const ROWS = PLANS.map((p) => ({
+  variant: p.variant,
+  shortName: p.shortName,
+  cells: {
+    料金: priceDisplay(p),
+    形態: p.comparison.format,
+    こんな方に: p.comparison.audience,
+    "AI Suite": p.comparison.aiSuite,
+    "面談・サポート": p.comparison.support,
+    主な対象業種: p.targetIndustry
+      .replace(/施設|店|会社/g, "")
+      .replace(/ \/ /g, "・")
+      .replace(/ツアー・アクティビティ/, "ツアー"),
   },
-  {
-    label: "形態",
-    values: [
-      "月額制（サブスクリプション）",
-      "個別見積（法人・団体向け）",
-      "買い切り（オンプレミス）",
-    ],
-  },
-  {
-    label: "こんな方に",
-    values: [
-      "AI ツールを試してみたい方",
-      "経営全体の改善に取り組みたい方",
-      "自社設備で AI を完結運用したい方",
-    ],
-  },
-  {
-    label: "AI Suite",
-    values: [
-      "ソフト利用",
-      "ソフト利用 + カスタム開発",
-      "ソフト + 導入機器一式",
-    ],
-  },
-  {
-    label: "面談・サポート",
-    values: [
-      "月次オンライン面談",
-      "現地指導 + オンライン",
-      "導入サポート",
-    ],
-  },
-  {
-    label: "主な対象業種",
-    values: [
-      "宿泊・飲食・ツアー",
-      "宿泊・飲食・ツアー",
-      "宿泊",
-    ],
-  },
-] as const;
+}));
+
+const ROW_LABELS = Object.keys(ROWS[0].cells) as (keyof (typeof ROWS)[0]["cells"])[];
 
 export function ComparisonTable() {
   return (
@@ -74,35 +41,35 @@ export function ComparisonTable() {
           <thead>
             <tr>
               <th scope="col" className="w-1/5 p-3" />
-              {PLANS.map((plan) => (
+              {ROWS.map((row) => (
                 <th
-                  key={plan.variant}
+                  key={row.variant}
                   scope="col"
                   className={cn(
                     "w-[26.67%] rounded-t-lg p-3 text-center font-bold",
-                    HEADER_COLOR[plan.variant],
+                    HEADER_COLOR[row.variant],
                   )}
                 >
-                  {plan.name}
+                  {row.shortName}
                 </th>
               ))}
             </tr>
           </thead>
           <tbody>
-            {ROWS.map((row, i) => (
+            {ROW_LABELS.map((label, i) => (
               <tr
-                key={row.label}
+                key={label}
                 className={i % 2 === 0 ? "bg-paper-pure" : "bg-paper-soft"}
               >
                 <th scope="row" className="p-3 text-left font-bold text-ink-700">
-                  {row.label}
+                  {label}
                 </th>
-                {row.values.map((val, j) => (
+                {ROWS.map((row) => (
                   <td
-                    key={PLANS[j].variant}
+                    key={row.variant}
                     className="p-3 text-center text-ink-900"
                   >
-                    {val}
+                    {row.cells[label]}
                   </td>
                 ))}
               </tr>
@@ -113,28 +80,28 @@ export function ComparisonTable() {
 
       {/* Mobile cards */}
       <div className="space-y-6 md:hidden">
-        {PLANS.map((plan, planIdx) => (
+        {ROWS.map((row) => (
           <div
-            key={plan.variant}
+            key={row.variant}
             className="rounded-lg border border-ink-200 bg-paper-pure overflow-hidden"
           >
             <div
               className={cn(
                 "p-3 text-center font-bold",
-                HEADER_COLOR[plan.variant],
+                HEADER_COLOR[row.variant],
               )}
             >
-              {plan.name}
+              {row.shortName}
             </div>
             <dl className="divide-y divide-ink-100 px-4">
-              {ROWS.map((row) => (
+              {ROW_LABELS.map((label) => (
                 <div
-                  key={row.label}
+                  key={label}
                   className="flex justify-between gap-2 py-3 text-sm"
                 >
-                  <dt className="font-bold text-ink-700">{row.label}</dt>
+                  <dt className="font-bold text-ink-700">{label}</dt>
                   <dd className="text-right text-ink-900">
-                    {row.values[planIdx]}
+                    {row.cells[label]}
                   </dd>
                 </div>
               ))}
