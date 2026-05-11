@@ -18,9 +18,9 @@ export function AISuiteToolTile({
       <p className="text-xs font-bold text-ink-400">
         {String(number).padStart(2, "0")}
       </p>
-      <h4 className="mt-1 text-sm font-bold leading-snug text-ink-900">
+      <h3 className="mt-1 text-sm font-bold leading-snug text-ink-900">
         {name}
-      </h4>
+      </h3>
       <p className="mt-0.5 text-xs text-ink-500">{tagline}</p>
       <div className="mt-2 flex flex-wrap gap-1">
         {tags.map((tag) => (

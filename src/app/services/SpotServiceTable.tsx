@@ -9,12 +9,15 @@ export function SpotServiceTable() {
   return (
     <div>
       <table className="w-full text-sm">
+        <caption className="sr-only">スポット発注 料金表</caption>
         <thead>
           <tr className="border-b border-ink-200">
-            <th className="py-3 text-left font-bold text-ink-700">
+            <th scope="col" className="py-3 text-left font-bold text-ink-700">
               サービス内容
             </th>
-            <th className="py-3 text-right font-bold text-ink-700">料金</th>
+            <th scope="col" className="py-3 text-right font-bold text-ink-700">
+              料金
+            </th>
           </tr>
         </thead>
         <tbody>

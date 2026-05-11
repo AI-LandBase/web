@@ -52,7 +52,7 @@ export function DetailedPlanCard({
         ACCENT_BORDER[variant],
       )}
     >
-      <p className={cn("text-sm font-bold", ACCENT_TEXT[variant])}>{name}</p>
+      <h3 className={cn("text-sm font-bold", ACCENT_TEXT[variant])}>{name}</h3>
       <p className="mt-2 text-2xl font-bold text-ink-900">
         {priceLabel}
         {priceNote && (

@@ -195,16 +195,12 @@ export default function ServicesPage() {
 
       {/* 4. Spot services */}
       <Section>
+        <SectionHeading
+          title="スポット発注（施設管理代行）"
+          lead="月額契約とは別に、必要な業務だけをスポットでご依頼いただけます。繁忙期の人手不足や急な対応が必要な場面でご活用ください。"
+        />
         <div className="mx-auto max-w-[720px]">
-          <h3 className="text-xl font-bold md:text-2xl">
-            スポット発注（施設管理代行）
-          </h3>
-          <p className="mt-2 text-sm leading-relaxed text-ink-600">
-            月額契約とは別に、必要な業務だけをスポットでご依頼いただけます。繁忙期の人手不足や急な対応が必要な場面でご活用ください。
-          </p>
-          <div className="mt-6">
-            <SpotServiceTable />
-          </div>
+          <SpotServiceTable />
         </div>
       </Section>
 

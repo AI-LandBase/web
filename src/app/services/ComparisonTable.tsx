@@ -70,12 +70,14 @@ export function ComparisonTable() {
       {/* Desktop table */}
       <div className="hidden md:block">
         <table className="w-full border-collapse text-sm">
+          <caption className="sr-only">プラン比較表</caption>
           <thead>
             <tr>
-              <th className="w-1/5 p-3" />
+              <th scope="col" className="w-1/5 p-3" />
               {PLANS.map((plan) => (
                 <th
                   key={plan.variant}
+                  scope="col"
                   className={cn(
                     "w-[26.67%] rounded-t-lg p-3 text-center font-bold",
                     HEADER_COLOR[plan.variant],
@@ -92,9 +94,14 @@ export function ComparisonTable() {
                 key={row.label}
                 className={i % 2 === 0 ? "bg-paper-pure" : "bg-paper-soft"}
               >
-                <td className="p-3 font-bold text-ink-700">{row.label}</td>
+                <th scope="row" className="p-3 text-left font-bold text-ink-700">
+                  {row.label}
+                </th>
                 {row.values.map((val, j) => (
-                  <td key={j} className="p-3 text-center text-ink-900">
+                  <td
+                    key={PLANS[j].variant}
+                    className="p-3 text-center text-ink-900"
+                  >
                     {val}
                   </td>
                 ))}
@@ -109,9 +116,7 @@ export function ComparisonTable() {
         {PLANS.map((plan, planIdx) => (
           <div
             key={plan.variant}
-            className={cn(
-              "rounded-lg border border-ink-200 bg-paper-pure overflow-hidden",
-            )}
+            className="rounded-lg border border-ink-200 bg-paper-pure overflow-hidden"
           >
             <div
               className={cn(
