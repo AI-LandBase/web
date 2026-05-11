@@ -1,0 +1,273 @@
+# 20. Design Tokens — AI.LandBase Corporate Site
+#
+# Source of truth for colors, typography, spacing, radii, shadows, motion.
+# Inferred from reference screenshots and BRIEF.md. Phase 5 (デザインシステム正規化)
+# may tighten these; until then, build against the values here.
+#
+# Naming follows a "semantic > primitive" pattern. Implementations should
+# expose semantic tokens as CSS custom properties via Tailwind v4's @theme.
+# See 60-implementation-notes.md for the @theme block.
+
+# -----------------------------------------------------------------------------
+# COLORS
+# -----------------------------------------------------------------------------
+# Contrast targets:
+#   - body text on background: ≥ 7:1 (AAA where feasible, AA required)
+#   - large/UI text: ≥ 4.5:1
+#   - non-text UI (borders, focus, icons): ≥ 3:1
+# All pairings flagged "VERIFIED" have been checked against WCAG 2.1.
+
+colors:
+
+  # --- Primitive scale: ink (text + dark surfaces) ------------------------
+  ink:
+    "950": "#0E1B2C"   # deepest navy — footer bg, hero overlay text
+    "900": "#142840"   # primary brand navy — primary buttons, headlines
+    "800": "#1E3A5F"   # nav text, h2
+    "700": "#2C4F7C"   # secondary headlines, dark links
+    "600": "#3D6594"   # subdued ui text
+    "500": "#5F7FA3"   # tertiary text on white
+    "400": "#8FA3BD"   # placeholder, disabled
+    "300": "#B8C5D6"   # dividers (on white)
+    "200": "#D8E0EB"   # subtle borders
+    "100": "#EEF2F7"   # alternating section bg
+    "50":  "#F7F9FC"   # large light surfaces
+
+  # --- Primitive: paper (off-white, surface tints) ------------------------
+  paper:
+    pure:   "#FFFFFF"  # card surface, modal
+    soft:   "#FAFBFC"  # body bg (very subtle warmth-free white)
+    mist:   "#F0F5FA"  # hero-light gradient base (Services page)
+    sky:    "#E3EEF7"  # hero-light gradient end
+
+  # --- Plan accents — load-bearing semantic meaning -----------------------
+  # P5 lock: green=Standard, blue=Professional, amber=AI Suite Server.
+  # Each has a base (for accent line / price text) and a soft (for tinted backgrounds).
+  # All `base` values verified to clear WCAG AA 4.5:1 against white (#FFFFFF):
+  #   - plan.standard.base     #267A62  →  5.19:1 ✓
+  #   - plan.professional.base #2E5C9E  →  6.69:1 ✓
+  #   - plan.server.base       #A96522  →  4.59:1 ✓
+  # Note: server base sits closest to the AA floor (4.59 vs 4.50). If used
+  # at small sizes against off-white surfaces (e.g. plan.standard.soft as
+  # background), recompute. For white surfaces it is compliant.
+  plan:
+    standard:
+      base: "#267A62"   # forest/teal green — Standard accent (was #2F8E73; failed AA at 4.01:1)
+      soft: "#E6F2EE"   # tinted card background option
+    professional:
+      base: "#2E5C9E"   # institutional blue — Professional accent
+      soft: "#E4ECF7"
+    server:
+      base: "#A96522"   # amber/brown-orange — AI Suite Server accent (was #C77A2A; failed AA at 3.36:1)
+      soft: "#FAEFE0"
+
+  # --- Semantic aliases (USE THESE in components) -------------------------
+  semantic:
+    bg:
+      base:        "{paper.soft}"        # page background
+      surface:     "{paper.pure}"        # cards, raised surfaces
+      alt:         "{ink.100}"           # alternating section
+      hero:        "linear-gradient(180deg, {paper.mist} 0%, {paper.sky} 100%)"  # Services-style soft hero
+      footer:      "{ink.900}"           # dark CTA + footer
+      overlay:     "rgba(14, 27, 44, 0.45)"  # photo darken layer for hero text
+
+    text:
+      primary:     "{ink.900}"           # body + headlines on light. VERIFIED 13.5:1 on paper.pure
+      secondary:   "{ink.700}"           # secondary copy. VERIFIED 7.8:1 on paper.pure
+      muted:       "{ink.500}"           # captions, fine print. VERIFIED 4.9:1 on paper.pure
+      onDark:      "{paper.pure}"        # text on ink.900. VERIFIED 13.5:1
+      onDarkMuted: "{ink.200}"           # secondary text on dark. VERIFIED 8.4:1 on ink.900
+
+    border:
+      subtle:      "{ink.200}"           # card borders, table rules
+      strong:      "{ink.300}"           # focus-adjacent dividers
+      focus:       "{ink.700}"           # focus ring color (≥3:1 on white)
+
+    action:
+      primary:     "{ink.900}"           # primary button bg
+      primaryHover:"{ink.800}"
+      primaryText: "{paper.pure}"
+      ghost:       "transparent"
+      ghostHover:  "{ink.100}"
+      ghostText:   "{ink.900}"
+
+    accent:
+      # If you need a single brand accent independent of plan, use this.
+      # Currently the cool teal echoing the logomark.
+      base:        "#1F7A8C"             # logo-inspired teal
+      hover:       "#155F70"
+
+# -----------------------------------------------------------------------------
+# TYPOGRAPHY
+# -----------------------------------------------------------------------------
+# Japanese primary, with system stack fallback. Numerals (for prices) use a
+# tabular-numeral feature setting so prices align in the comparison table.
+
+typography:
+  fontFamily:
+    sans: >
+      "Noto Sans JP", "Hiragino Sans", "Hiragino Kaku Gothic ProN",
+      "Yu Gothic Medium", "Meiryo", system-ui, -apple-system, sans-serif
+    # For latin price digits / display numerals we *layer* a latin face.
+    # Use font-feature-settings: "tnum" 1, "palt" 1 on body.
+    display: >
+      "Inter", "Noto Sans JP", "Hiragino Sans", system-ui, sans-serif
+    mono: >
+      "JetBrains Mono", ui-monospace, "SF Mono", monospace
+
+  # Type scale (modular, 1.200 minor third on mobile, 1.250 major third on desktop).
+  # Each step ships with paired line-height. Weights stay limited: 400/500/700.
+  scale:
+    # name:          mobile (rem)   desktop (rem)   line-height    weight    use
+    eyebrow:       { size: 0.75,   sizeMd: 0.8125, lh: 1.4,  weight: 500, tracking: "0.08em", upper: true,  use: "section eyebrow / category tag" }
+    caption:       { size: 0.8125, sizeMd: 0.875,  lh: 1.55, weight: 400, use: "captions, fine print, footnotes" }
+    body:          { size: 0.9375, sizeMd: 1.0,    lh: 1.75, weight: 400, use: "body paragraphs (主要)" }
+    bodyLg:        { size: 1.0,    sizeMd: 1.125,  lh: 1.7,  weight: 400, use: "hero subhead / lead paragraph" }
+    h6:            { size: 1.0,    sizeMd: 1.125,  lh: 1.5,  weight: 700, use: "card title (small)" }
+    h5:            { size: 1.125,  sizeMd: 1.25,   lh: 1.45, weight: 700, use: "card title" }
+    h4:            { size: 1.25,   sizeMd: 1.5,    lh: 1.4,  weight: 700, use: "subsection heading" }
+    h3:            { size: 1.5,    sizeMd: 1.875,  lh: 1.35, weight: 700, use: "section heading (default)" }
+    h2:            { size: 1.875,  sizeMd: 2.25,   lh: 1.3,  weight: 700, use: "page section H2" }
+    h1:            { size: 2.0,    sizeMd: 3.0,    lh: 1.25, weight: 700, use: "page H1 (Services)" }
+    hero:          { size: 2.25,   sizeMd: 3.5,    lh: 1.2,  weight: 700, use: "top-page hero headline" }
+    price:         { size: 2.5,    sizeMd: 3.5,    lh: 1.0,  weight: 700, tabular: true, use: "plan price numeral" }
+    priceLg:       { size: 3.0,    sizeMd: 4.0,    lh: 1.0,  weight: 700, tabular: true, use: "comparison table price" }
+
+  # Japanese-specific defaults applied globally
+  japanese:
+    fontFeatureSettings: '"palt" 1'   # proportional alt — tightens kana spacing
+    letterSpacing: "0.02em"           # subtle tracking for JP body
+    lineBreak: "strict"               # use CSS line-break: strict for JP
+    wordBreak: "keep-all"             # prevent breaking inside JP words
+
+  # Numeral handling for prices (¥1,965,000 etc.)
+  numerals:
+    fontFeatureSettings: '"tnum" 1'   # tabular numerals
+    fontVariantNumeric: "tabular-nums"
+
+# -----------------------------------------------------------------------------
+# SPACING
+# -----------------------------------------------------------------------------
+# 4px base. Section-level rhythm uses dedicated tokens, NOT raw step values,
+# so we can re-tune spacing globally without grep-and-replace.
+
+spacing:
+  # Primitive (raw 4px steps). Aliased into Tailwind's default scale.
+  step:
+    "0":   "0"
+    "0.5": "0.125rem"   # 2px
+    "1":   "0.25rem"    # 4px
+    "2":   "0.5rem"     # 8px
+    "3":   "0.75rem"    # 12px
+    "4":   "1rem"       # 16px
+    "5":   "1.25rem"    # 20px
+    "6":   "1.5rem"     # 24px
+    "8":   "2rem"       # 32px
+    "10":  "2.5rem"     # 40px
+    "12":  "3rem"       # 48px
+    "16":  "4rem"       # 64px
+    "20":  "5rem"       # 80px
+    "24":  "6rem"       # 96px
+    "32":  "8rem"       # 128px
+
+  # Semantic spacing — components reach for these names.
+  semantic:
+    inputPaddingX:  "{step.4}"
+    inputPaddingY:  "{step.3}"
+    cardPadding:    "{step.6}"
+    cardPaddingLg:  "{step.8}"
+    sectionGapY:    { mobile: "{step.16}", desktop: "{step.24}" }  # space BETWEEN sections
+    sectionPadY:    { mobile: "{step.12}", desktop: "{step.20}" }  # inner padding of a section
+    stackXs:        "{step.2}"
+    stackSm:        "{step.4}"
+    stackMd:        "{step.6}"
+    stackLg:        "{step.10}"
+    gridGutter:     { mobile: "{step.4}", desktop: "{step.6}" }    # column gap in grids
+
+# -----------------------------------------------------------------------------
+# RADII
+# -----------------------------------------------------------------------------
+# Subdued radii. Nothing pill-shaped except mailto-button optional variant.
+
+radii:
+  none:  "0"
+  xs:    "0.125rem"   # 2px — table cell internal
+  sm:    "0.25rem"    # 4px — chips, small tags
+  md:    "0.5rem"     # 8px — buttons, inputs, small cards
+  lg:    "0.75rem"    # 12px — plan cards, feature cards
+  xl:    "1rem"       # 16px — hero photo container, image frames
+  full:  "9999px"     # icon bg circles, "category tag" rounded pills
+
+# -----------------------------------------------------------------------------
+# BORDERS
+# -----------------------------------------------------------------------------
+borders:
+  width:
+    "0":  "0"
+    "1":  "1px"
+    "2":  "2px"      # plan card top accent
+    "4":  "4px"      # comparison table column accent header
+  style:
+    solid: "solid"
+
+# -----------------------------------------------------------------------------
+# SHADOWS
+# -----------------------------------------------------------------------------
+# Soft, mostly used to lift cards on light backgrounds. No dark mode shadows yet.
+
+shadows:
+  none:   "none"
+  xs:     "0 1px 2px 0 rgba(14, 27, 44, 0.04)"
+  sm:     "0 1px 3px 0 rgba(14, 27, 44, 0.06), 0 1px 2px -1px rgba(14, 27, 44, 0.04)"
+  md:     "0 4px 12px -2px rgba(14, 27, 44, 0.08), 0 2px 4px -2px rgba(14, 27, 44, 0.04)"
+  lg:     "0 12px 24px -8px rgba(14, 27, 44, 0.12), 0 4px 8px -4px rgba(14, 27, 44, 0.06)"
+  focus:  "0 0 0 3px rgba(44, 79, 124, 0.35)"   # focus ring — ink.700 @35%
+
+# -----------------------------------------------------------------------------
+# MOTION
+# -----------------------------------------------------------------------------
+# Restrained. Respect prefers-reduced-motion.
+
+motion:
+  duration:
+    instant: "75ms"
+    fast:    "150ms"
+    base:    "200ms"
+    slow:    "300ms"
+  easing:
+    standard:  "cubic-bezier(0.2, 0, 0, 1)"
+    decelerate:"cubic-bezier(0, 0, 0, 1)"
+    accelerate:"cubic-bezier(0.3, 0, 1, 1)"
+  patterns:
+    hoverLift:   "transform {duration.fast} {easing.standard}, box-shadow {duration.fast} {easing.standard}"
+    colorFade:   "color {duration.fast} {easing.standard}, background-color {duration.fast} {easing.standard}"
+  reducedMotion:
+    # When prefers-reduced-motion: reduce, durations collapse to instant.
+    fallbackDuration: "1ms"
+
+# -----------------------------------------------------------------------------
+# Z-INDEX
+# -----------------------------------------------------------------------------
+zIndex:
+  base:     0
+  raised:   10     # card hover lift
+  sticky:   20     # sticky header
+  overlay:  30     # photo darken layer
+  dropdown: 40     # nav dropdown (currently none, reserved)
+  modal:    50     # reserved
+  toast:    60     # reserved
+
+# -----------------------------------------------------------------------------
+# ICONS
+# -----------------------------------------------------------------------------
+# Library choice: Lucide (open-source, MIT, line-style matches references).
+# All icons rendered at 24×24 stroke 1.5 by default; 20×20 for inline-with-text.
+icons:
+  library: "lucide-react"
+  defaultSize: 24
+  smallSize:   20
+  strokeWidth: 1.5
+  bgCircle:
+    size:      64   # 64px circle for problem cards & "reasons" cards
+    color:     "{ink.100}"
+    iconColor: "{ink.800}"

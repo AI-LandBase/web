@@ -1,0 +1,269 @@
+# 25. Layout Contract — AI.LandBase Corporate Site
+#
+# This file is enforceable. Anything that violates it should fail acceptance.
+# In particular: horizontal-scroll rule, max-width discipline, and the
+# full-bleed vs. constrained section distinction.
+#
+# Treat the three named viewports as authoritative test points. The site must
+# work across the *full* range 320px–1920px+, but if you only have time to
+# verify three, verify these.
+
+# -----------------------------------------------------------------------------
+# TARGET VIEWPORTS
+# -----------------------------------------------------------------------------
+viewports:
+  mobile:
+    name: "mobile (default)"
+    width: 375
+    notes: "iPhone-class. Default styles target this; do not gate them behind a media query."
+    deviceClass: "phone"
+  tablet:
+    name: "tablet"
+    width: 768
+    notes: "iPad portrait. Marks the breakpoint where 2-column layouts become viable."
+    deviceClass: "tablet"
+  desktop:
+    name: "desktop"
+    width: 1440
+    notes: "Primary desktop comp size. 3-column plan grids unlock here."
+    deviceClass: "desktop"
+
+# -----------------------------------------------------------------------------
+# BREAKPOINTS (Tailwind v4 alignment)
+# -----------------------------------------------------------------------------
+# Mobile-first. Each breakpoint is min-width.
+breakpoints:
+  sm:  640    # tighter phones → larger phones
+  md:  768    # tablet portrait
+  lg:  1024   # tablet landscape / small laptop
+  xl:  1280   # desktop
+  "2xl": 1536 # wide desktop
+
+# -----------------------------------------------------------------------------
+# PAGE WRAPPER
+# -----------------------------------------------------------------------------
+# The page-level <main> is full-width (100vw, no horizontal scroll). Each
+# *section* inside decides whether to render its content full-bleed or inside
+# the constrained container.
+
+pageWrapper:
+  width: "100%"
+  minWidth: 320
+  overflowX: hidden       # safety net; ideal is "we never need this"
+  background: "{semantic.bg.base}"
+
+# -----------------------------------------------------------------------------
+# CONTAINER (constrained inner content)
+# -----------------------------------------------------------------------------
+container:
+  # max-width of the inner reading column for prose/marketing content
+  maxWidth:
+    mobile:  "100%"
+    tablet:  "100%"
+    desktop: "1200px"     # primary content boundary
+  # padding (= gutter to viewport edge). Internal sections rely on this.
+  paddingX:
+    mobile:  "1rem"       # 16px — 375px viewport leaves 343px content
+    tablet:  "1.5rem"     # 24px
+    desktop: "2rem"       # 32px — 1200 + 64 ≈ 1264, fits inside 1440 comfortably
+  # centered horizontally
+  marginX: "auto"
+
+# Narrow variant for long-form copy passages (about page body, legal text).
+containerNarrow:
+  maxWidth:
+    mobile:  "100%"
+    tablet:  "640px"
+    desktop: "720px"
+
+# -----------------------------------------------------------------------------
+# READING MEASURE
+# -----------------------------------------------------------------------------
+# Optical line length for body prose. JP characters are wider than latin, so
+# the character target is lower than the typical 65–75ch latin guideline.
+readingMeasure:
+  bodyJa:
+    minChars: 28          # JP characters per line (full-width)
+    maxChars: 42
+    impliedMaxWidth: "44rem"  # ~704px at 1rem = 16px
+  bodyEn:
+    minChars: 55
+    maxChars: 75
+    impliedMaxWidth: "42rem"
+
+# -----------------------------------------------------------------------------
+# FULL-BLEED vs CONSTRAINED — section taxonomy
+# -----------------------------------------------------------------------------
+# Every section on the site is one of these patterns. Mixing them inside one
+# section (e.g. a full-bleed background with constrained inner content) is
+# *encouraged* and shown in the "withInner" patterns below.
+
+sectionPatterns:
+
+  constrained:
+    description: "Section background is the page background. Content is inside the container."
+    background: "inherit (page bg)"
+    contentWidth: "container"
+    examples:
+      - "課題セクション (3-up problem cards on top page)"
+      - "選ばれる理由"
+
+  fullBleedColor:
+    description: "Section background spans 100% viewport width with a solid or gradient color. Content is constrained inside."
+    background: "color or gradient"
+    contentWidth: "container"
+    examples:
+      - "Services page hero (light blue gradient + leaf decoration)"
+      - "Bottom CTA section (ink.900 navy)"
+      - "Footer (ink.900 navy)"
+
+  fullBleedMedia:
+    description: "Section is a photographic hero spanning 100% viewport width. Content text is constrained inside and overlaid with a darken layer (semantic.bg.overlay)."
+    background: "image (object-cover) + overlay"
+    contentWidth: "container, vertically centered"
+    examples:
+      - "Top page hero (Okinawa coast photo)"
+
+  asymmetric:
+    description: "Two-column section: photo (or graphic) + text. Photo bleeds to one viewport edge on desktop, stacks above text on mobile."
+    background: "inherit"
+    contentWidth: "mixed (photo can extend beyond container, text stays inside)"
+    examples:
+      - "Ikigai Stay 「私たちが最初のユーザーです」 section"
+
+# -----------------------------------------------------------------------------
+# RESPONSIVE COLUMN BEHAVIOR
+# -----------------------------------------------------------------------------
+# Component-by-component rule. Default: stack on mobile, multi-column on ≥md.
+columnRules:
+
+  problemCards:       # 3 cards: 人手不足 / データが活かせない / 季節による売上の波
+    mobile:  { columns: 1, layout: "horizontal-listitem (icon left, text right)" }
+    tablet:  { columns: 3, layout: "grid (icon stacked above text, centered)" }
+    desktop: { columns: 3, layout: "grid (icon stacked above text, centered)" }
+
+  planCards:          # 3 cards: スタンダード / プロフェッショナル / AI Suite Server
+    mobile:  { columns: 1, layout: "stacked horizontal cards (compact)" }
+    tablet:  { columns: 1, layout: "stacked vertical cards" }
+    desktop: { columns: 3, layout: "grid (equal-height vertical cards)" }
+    note: "On all breakpoints, accent line and price are visible above the fold of the card."
+
+  reasonCards:        # 3 cards: 価格を公開 / 沖縄北部拠点 / 伴走支援
+    mobile:  { columns: 1, layout: "horizontal-listitem (icon left, text right)" }
+    tablet:  { columns: 3, layout: "grid centered" }
+    desktop: { columns: 3, layout: "grid centered" }
+
+  aiSuiteGrid:        # 10 tool tiles
+    mobile:  { columns: 2, layout: "2×5 grid" }
+    tablet:  { columns: 3, layout: "approx 3×4 grid (last row underfilled)" }
+    desktop: { columns: 5, layout: "5×2 grid" }
+    note: "Each tile: icon top, name, category tag pill, 1-line description. All as text — accessibility (P8)."
+
+  spotServiceTable:   # 清掃 / リネン / 緊急対応 / カスタム
+    mobile:  { layout: "stacked definition list (label + price)" }
+    tablet:  { layout: "2-column table" }
+    desktop: { layout: "2-column table" }
+
+  planComparisonTable:  # Services page hero comparison
+    mobile:  { layout: "3 stacked summary cards (NOT a horizontally scrolling table — P6)" }
+    tablet:  { layout: "compact 3-col table, smaller padding" }
+    desktop: { layout: "full 3-col table" }
+
+  footerSitemap:
+    mobile:  { columns: 2, layout: "2-up category list" }
+    tablet:  { columns: 4, layout: "4-up category list" }
+    desktop: { columns: 4, layout: "4-up category list" }
+
+  ctaButtonGroup:     # bottom CTA: 3 mailto buttons
+    mobile:  { columns: 1, layout: "stacked full-width" }
+    tablet:  { columns: 3, layout: "3-up" }
+    desktop: { columns: 3, layout: "3-up" }
+
+# -----------------------------------------------------------------------------
+# HORIZONTAL SCROLL RULES
+# -----------------------------------------------------------------------------
+horizontalScroll:
+  policy: "NONE"
+  enforcement:
+    - "html, body, main { overflow-x: hidden } as a safety net only — never as a fix."
+    - "No element may have intrinsic width > 100vw at any breakpoint 320px–1920px."
+    - "Wide content (e.g. long ¥1,965,000 with unit) must not force horizontal layout — wrap or shrink type."
+    - "No carousel components in v1."
+    - "The plan comparison table MUST collapse to stacked cards on mobile (see columnRules.planComparisonTable). Do NOT use overflow-x: auto as the mobile fallback."
+    - "Images use max-width: 100%; height: auto on all surfaces."
+    - "Long unbroken JP strings must use word-break: keep-all + line-break: strict; long latin tokens use overflow-wrap: anywhere."
+  testAt: [320, 360, 375, 414, 768, 1024, 1280, 1440, 1920]
+
+# -----------------------------------------------------------------------------
+# HEADER (sticky)
+# -----------------------------------------------------------------------------
+header:
+  position: "sticky"
+  top: 0
+  height:
+    mobile: "56px"
+    desktop: "72px"
+  background: "{semantic.bg.surface}"   # white
+  backdropFilter: "none"                # solid, no blur — P2 quiet
+  borderBottom: "1px solid {semantic.border.subtle}"
+  zIndex: "{zIndex.sticky}"
+  layout:
+    mobile:  "[logo] ---spacer--- [hamburger]"
+    desktop: "[logo] ---spacer--- [nav links] [CTA button]"
+
+# -----------------------------------------------------------------------------
+# SECTION RHYTHM
+# -----------------------------------------------------------------------------
+# Vertical space BETWEEN sections is controlled by section's own padY,
+# NOT by margins. Adjacent sections collapse cleanly because each section
+# owns its top and bottom breathing room.
+sectionRhythm:
+  paddingY:
+    mobile:  "3rem"    # 48px
+    tablet:  "4rem"    # 64px
+    desktop: "5rem"    # 80px
+  # Hero sections override:
+  heroPaddingY:
+    mobile:  "4rem"
+    tablet:  "5rem"
+    desktop: "6rem"
+
+# -----------------------------------------------------------------------------
+# GRID SYSTEM
+# -----------------------------------------------------------------------------
+# Not a traditional 12-col grid — we use CSS Grid auto-fit / flex.
+# Tokenized "column counts" per component live above in columnRules.
+gutter:
+  mobile:  "1rem"     # 16px between cards
+  tablet:  "1.25rem"  # 20px
+  desktop: "1.5rem"   # 24px
+
+# -----------------------------------------------------------------------------
+# RESPONSIVE IMAGE RULES
+# -----------------------------------------------------------------------------
+images:
+  defaultBehavior: "max-width: 100%; height: auto; display: block"
+  hero:
+    aspectRatio:
+      mobile: "4 / 3"
+      tablet: "16 / 9"
+      desktop: "21 / 9"
+    objectFit: "cover"
+    objectPosition: "center 60%"   # bias slightly downward for sky-heavy photos
+  ikigaiStay:
+    aspectRatio:
+      mobile: "16 / 10"
+      desktop: "4 / 3"
+    objectFit: "cover"
+  decorativeLeaf:   # Services hero botanical
+    role: "decoration"
+    ariaHidden: true
+    positioning: "absolute, right, low opacity (~0.6), behind content"
+    hideAt: "mobile (clutters small viewport)"
+
+# -----------------------------------------------------------------------------
+# Z-INDEX STACK ORDER (recap)
+# -----------------------------------------------------------------------------
+# See 20-design-tokens.yaml for values.
+# 0=base, 10=raised(card lift), 20=sticky header, 30=photo overlay,
+# 40=dropdown, 50=modal, 60=toast.
