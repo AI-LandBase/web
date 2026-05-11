@@ -1,7 +1,6 @@
 export function LeaderProfile() {
   return (
-    <div className="mx-auto flex max-w-[720px] flex-col gap-8 md:flex-row md:items-start">
-      <div className="mx-auto h-40 w-40 shrink-0 rounded-full bg-gradient-to-br from-paper-sky to-ink-100 md:mx-0" />
+    <div className="mx-auto max-w-[720px]">
       <div>
         <h3 className="text-xl font-bold">末永壽蔵</h3>
         <p className="mt-1 text-sm text-ink-500">
