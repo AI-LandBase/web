@@ -6,10 +6,14 @@ node_modules/
 out/
 
 # Environment files (contain secrets)
+.env
 .env.development
 .env.production
 .env.local
 .env.*.local
+
+# TypeScript
+tsconfig.tsbuildinfo
 
 # OS
 .DS_Store
