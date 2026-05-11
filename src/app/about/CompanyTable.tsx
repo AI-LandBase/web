@@ -1,14 +1,15 @@
-"use client";
+import { EmailText } from "@/components/layout/EmailText";
 
-import { useEffect, useState } from "react";
+type Row = {
+  label: string;
+  value: string;
+  isLink?: boolean;
+};
 
-const ROWS = [
+const ROWS: Row[] = [
   { label: "正式名称", value: "株式会社 AI.LandBase（アイランドベース）" },
   { label: "代表者", value: "末永壽蔵" },
-  {
-    label: "所在地",
-    value: "〒905-0412 沖縄県国頭郡今帰仁村湧川 852-2",
-  },
+  { label: "所在地", value: "〒905-0412 沖縄県国頭郡今帰仁村湧川 852-2" },
   { label: "設立", value: "2025 年 6 月 26 日" },
   { label: "資本金", value: "300 万円" },
   {
@@ -17,15 +18,9 @@ const ROWS = [
       "観光業向け AI ソリューションの開発・提供、経営支援コンサルティング、施設管理代行",
   },
   { label: "Web", value: "https://ai-landbase.jp/", isLink: true },
-] as const;
+];
 
 export function CompanyTable() {
-  const [email, setEmail] = useState<string | null>(null);
-
-  useEffect(() => {
-    setEmail(`${"info"}@${"ai-landbase.jp"}`);
-  }, []);
-
   return (
     <dl className="mx-auto max-w-[720px] divide-y divide-ink-200">
       {ROWS.map((row) => (
@@ -37,7 +32,7 @@ export function CompanyTable() {
             {row.label}
           </dt>
           <dd className="text-sm text-ink-900">
-            {"isLink" in row && row.isLink ? (
+            {row.isLink ? (
               <a
                 href={row.value}
                 className="text-ink-800 underline hover:text-ink-900"
@@ -56,7 +51,9 @@ export function CompanyTable() {
         <dt className="w-32 shrink-0 text-sm font-bold text-ink-700">
           メール
         </dt>
-        <dd className="text-sm text-ink-900">{email}</dd>
+        <dd className="text-sm text-ink-900">
+          <EmailText as="span" className="mt-0 text-ink-900" />
+        </dd>
       </div>
     </dl>
   );

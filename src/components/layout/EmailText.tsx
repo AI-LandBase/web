@@ -1,8 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { cn } from "@/lib/cn";
 
-export function EmailText() {
+type EmailTextProps = {
+  className?: string;
+  as?: "p" | "span";
+};
+
+export function EmailText({ className, as: Tag = "p" }: EmailTextProps) {
   const [email, setEmail] = useState<string | null>(null);
 
   useEffect(() => {
@@ -11,5 +17,5 @@ export function EmailText() {
 
   if (!email) return null;
 
-  return <p className="mt-2 text-sm text-ink-200">{email}</p>;
+  return <Tag className={cn("mt-2 text-sm text-ink-200", className)}>{email}</Tag>;
 }
