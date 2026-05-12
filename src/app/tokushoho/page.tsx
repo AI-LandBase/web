@@ -127,7 +127,7 @@ export default function TokushohoPage() {
               ))}
             </tbody>
           </table>
-          <p className="mt-4 text-xs text-ink-500">
+          <p className="mt-4 text-xs text-ink-600">
             ※
             上記は本表記作成時点の価格です。最新の価格は
             <Link

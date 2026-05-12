@@ -29,7 +29,7 @@ export function SpotServiceTable() {
           ))}
         </tbody>
       </table>
-      <p className="mt-3 text-xs text-ink-500">
+      <p className="mt-3 text-xs text-ink-600">
         ※上記は宿泊業向けの料金です。飲食・ツアー向けのスポット対応についてはお問い合わせください。
       </p>
     </div>

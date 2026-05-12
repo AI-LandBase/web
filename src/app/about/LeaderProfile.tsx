@@ -3,7 +3,7 @@ export function LeaderProfile() {
     <div className="mx-auto max-w-[720px]">
       <div>
         <h3 className="text-xl font-bold">末永壽蔵</h3>
-        <p className="mt-1 text-sm text-ink-500">
+        <p className="mt-1 text-sm text-ink-600">
           すえなが としぞう / 代表取締役
         </p>
         <div className="mt-4 space-y-3 text-base leading-relaxed text-ink-600">

@@ -44,7 +44,7 @@ export function DetailedPlanCard({
       <p className="mt-2 text-2xl font-bold text-ink-900">
         {priceLabel}
         {priceNote && (
-          <span className="ml-1 text-sm font-normal text-ink-500">
+          <span className="ml-1 text-sm font-normal text-ink-600">
             {priceNote}
           </span>
         )}
@@ -97,7 +97,7 @@ export function DetailedPlanCard({
         </a>
       )}
 
-      <p className="mt-4 text-xs text-ink-500">
+      <p className="mt-4 text-xs text-ink-600">
         対象業種: {targetIndustry}
       </p>
 

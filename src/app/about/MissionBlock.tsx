@@ -7,7 +7,7 @@ type MissionBlockProps = {
 export function MissionBlock({ eyebrow, title, body }: MissionBlockProps) {
   return (
     <div className="mx-auto max-w-[720px]">
-      <p className="text-xs font-medium uppercase tracking-[0.08em] text-ink-500">
+      <p className="text-xs font-medium uppercase tracking-[0.08em] text-ink-600">
         {eyebrow}
       </p>
       <h3 className="mt-2 text-xl font-bold leading-snug md:text-2xl">
