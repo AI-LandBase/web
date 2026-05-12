@@ -18,10 +18,11 @@
 /news                   お知らせ                         ← Phase 7
 /faq                    よくあるご質問                   ← Phase 7
 /privacy                プライバシーポリシー
+/tokushoho              特定商取引法に基づく表記
 /terms                  利用規約 (if applicable)
 ```
 
-**v1 launch scope**: `/`, `/services`, `/about`, `/contact`, `/privacy`. The rest are wired in the footer sitemap with a "準備中" indicator or as 404 placeholders, and are built out in Phase 7.
+**v1 launch scope**: `/`, `/services`, `/about`, `/contact`, `/privacy`, `/tokushoho`. The rest are wired in the footer sitemap with a "準備中" indicator or as 404 placeholders, and are built out in Phase 7.
 
 **Note on `/contact` and the mailto-only policy** — `/contact` is not a form page. It exists as a stable URL for: (a) the footer sitemap's "お問い合わせ" link, (b) Schema.org `ContactPage` for SEO, (c) users who want to see contact options aggregated before clicking, and (d) being the canonical destination if a future external link points to "the contact page". The header's常駐 CTA still triggers `mailto:` directly per the brief — `/contact` is reached primarily via the footer sitemap and from anchor links inside `/about`.
 
@@ -298,7 +299,7 @@ A stable URL aggregating contact options. Not a form page — consistent with BR
 
 - `<Header>` sticky at top.
 - `<Footer>` always present.
-- `<CTASection>` present on every public marketing page except `/contact`, `/privacy`, `/terms`. (`/contact` omits it because the entire page is the CTA.)
+- `<CTASection>` present on every public marketing page except `/contact`, `/privacy`, `/tokushoho`, `/terms`. (`/contact` omits it because the entire page is the CTA.)
 - Page title via `metadata.title`: `〇〇 | 株式会社 AI.LandBase`.
 - Page description and OGP image set on every page.
 
