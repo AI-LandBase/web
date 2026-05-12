@@ -3,7 +3,6 @@ import { Hero } from "@/components/sections/Hero";
 import { Section } from "@/components/primitives/Section";
 import { SectionHeading } from "@/components/primitives/SectionHeading";
 import { MailtoButton } from "@/components/cta/MailtoButton";
-import { EmailText } from "@/components/layout/EmailText";
 import { ContactDetails } from "./ContactDetails";
 
 export const metadata: Metadata = {
@@ -55,7 +54,8 @@ export default function ContactPage() {
 
       {/* 2. Intent buttons */}
       <Section>
-        <p className="mb-8 text-center text-sm font-medium text-ink-500">
+        <h2 className="sr-only">ご相談内容の選択</h2>
+        <p className="mb-10 text-center text-sm font-medium text-ink-500 md:mb-14">
           ご相談内容をお選びください
         </p>
         <div className="mx-auto grid max-w-[720px] gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -83,18 +83,14 @@ export default function ContactPage() {
 
       {/* 4. Approach */}
       <Section>
-        <div className="mx-auto max-w-[720px]">
-          <h3 className="text-lg font-bold text-ink-900">
-            お問い合わせから返信まで
-          </h3>
-          <div className="mt-4 space-y-3 text-sm leading-relaxed text-ink-600">
-            <p>
-              通常 2〜3 営業日以内に担当者よりご返信いたします。内容によってはお時間をいただく場合があります。
-            </p>
-            <p>
-              ご相談はすべて秘密厳守で対応いたします。検討段階のふわっとしたご相談も歓迎です。
-            </p>
-          </div>
+        <SectionHeading title="お問い合わせから返信まで" />
+        <div className="mx-auto max-w-[720px] space-y-3 text-sm leading-relaxed text-ink-600">
+          <p>
+            通常 2〜3 営業日以内に担当者よりご返信いたします。内容によってはお時間をいただく場合があります。
+          </p>
+          <p>
+            ご相談はすべて秘密厳守で対応いたします。検討段階のふわっとしたご相談も歓迎です。
+          </p>
         </div>
       </Section>
     </>
