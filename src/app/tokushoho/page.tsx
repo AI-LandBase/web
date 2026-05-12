@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Hero } from "@/components/sections/Hero";
 import { Section } from "@/components/primitives/Section";
 import { SectionHeading } from "@/components/primitives/SectionHeading";
+import { EmailText } from "@/components/layout/EmailText";
 
 export const metadata: Metadata = {
   title: "特定商取引法に基づく表記",
@@ -10,11 +11,11 @@ export const metadata: Metadata = {
     "株式会社 AI.LandBase の特定商取引法に基づく表記。販売事業者情報、販売価格、支払方法、返品・キャンセルについてご確認いただけます。",
 };
 
-const DISCLOSURE_ITEMS = [
+const DISCLOSURE_ITEMS: { label: string; value: string | null }[] = [
   { label: "販売事業者", value: "株式会社 AI.LandBase" },
   { label: "代表者", value: "末永壽蔵" },
   { label: "所在地", value: "〒905-0412 沖縄県国頭郡今帰仁村湧川 852-2" },
-  { label: "メールアドレス", value: "info@ai-landbase.jp" },
+  { label: "メールアドレス", value: null },
   {
     label: "電話番号",
     value: "ご請求いただいた方に遅滞なく開示いたします",
@@ -84,7 +85,11 @@ export default function TokushohoPage() {
                   >
                     {item.label}
                   </th>
-                  <td className="py-3 text-ink-700">{item.value}</td>
+                  <td className="py-3 text-ink-700">
+                    {item.value ?? (
+                      <EmailText as="span" className="mt-0 text-sm text-ink-700" />
+                    )}
+                  </td>
                 </tr>
               ))}
             </tbody>

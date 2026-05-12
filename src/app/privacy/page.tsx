@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Hero } from "@/components/sections/Hero";
 import { Section } from "@/components/primitives/Section";
+import { EmailText } from "@/components/layout/EmailText";
 
 export const metadata: Metadata = {
   title: "プライバシーポリシー",
@@ -136,6 +137,7 @@ export default function PrivacyPage() {
               本ポリシーに関するお問い合わせは、下記までご連絡ください。
             </p>
             <table className="mt-4 w-full text-left">
+              <caption className="sr-only">お問い合わせ先</caption>
               <tbody>
                 <tr className="border-b border-ink-200">
                   <th scope="row" className="py-2 pr-4 font-medium text-ink-900">
@@ -161,7 +163,9 @@ export default function PrivacyPage() {
                   <th scope="row" className="py-2 pr-4 font-medium text-ink-900">
                     メール
                   </th>
-                  <td className="py-2">info@ai-landbase.jp</td>
+                  <td className="py-2">
+                    <EmailText as="span" className="mt-0 text-sm text-ink-700" />
+                  </td>
                 </tr>
               </tbody>
             </table>
