@@ -108,6 +108,12 @@ export function Footer() {
               >
                 プライバシーポリシー
               </a>
+              <a
+                href="/tokushoho"
+                className="text-sm text-ink-200 transition-colors hover:text-paper-pure hover:underline"
+              >
+                特定商取引法に基づく表記
+              </a>
             </div>
           </div>
         </div>
