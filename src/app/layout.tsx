@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Noto_Sans_JP, Inter } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { SITE_URL, SITE_NAME } from "@/lib/constants";
 import "./globals.css";
 
 const notoSansJp = Noto_Sans_JP({
@@ -18,13 +19,26 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
+const description =
+  "沖縄県北部の観光業事業者向けに AI ツールと経営支援を提供しています。宿泊・飲食・ツアー事業者の皆さまに、データドリブンな経営への転換をお手伝いします。";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "株式会社 AI.LandBase | 沖縄の観光業に、AI という伴走者を",
-    template: "%s | 株式会社 AI.LandBase",
+    default: `${SITE_NAME} | 沖縄の観光業に、AI という伴走者を`,
+    template: `%s | ${SITE_NAME}`,
   },
-  description:
-    "沖縄県北部の観光業事業者向けに AI ツールと経営支援を提供しています。宿泊・飲食・ツアー事業者の皆さまに、データドリブンな経営への転換をお手伝いします。",
+  description,
+  openGraph: {
+    type: "website",
+    siteName: SITE_NAME,
+    locale: "ja_JP",
+    description,
+    images: [{ url: "/og/default.png", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
 };
 
 export default function RootLayout({
