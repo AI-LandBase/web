@@ -15,7 +15,7 @@ export function EmailText({ className, as: Tag = "p" }: EmailTextProps) {
     setEmail(`${"info"}@${"ai-landbase.jp"}`);
   }, []);
 
-  if (!email) return null;
+  if (!email) return <Tag className={cn("mt-2 text-sm text-ink-200", className)}>&nbsp;</Tag>;
 
   return <Tag className={cn("mt-2 text-sm text-ink-200", className)}>{email}</Tag>;
 }
