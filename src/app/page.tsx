@@ -6,6 +6,7 @@ import { Hero } from "@/components/sections/Hero";
 import { IconCard } from "@/components/sections/IconCard";
 import { PlanCard } from "@/components/sections/PlanCard";
 import { AsymmetricMediaSection } from "@/components/sections/AsymmetricMediaSection";
+import { SITE_URL, SITE_NAME } from "@/lib/constants";
 
 const PROBLEMS = [
   {
@@ -72,8 +73,31 @@ const REASONS = [
 ] as const;
 
 export default function Home() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: SITE_NAME,
+    url: SITE_URL,
+    logo: `${SITE_URL}/logo/logo.png`,
+    email: "info@ai-landbase.jp",
+    address: {
+      "@type": "PostalAddress",
+      postalCode: "905-0412",
+      addressRegion: "沖縄県",
+      addressLocality: "国頭郡今帰仁村",
+      streetAddress: "湧川 852-2",
+      addressCountry: "JP",
+    },
+    description:
+      "沖縄県北部の観光業事業者向けに AI ツールと経営支援を提供しています。",
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* 1. Hero */}
       <Hero
         variant="media"
