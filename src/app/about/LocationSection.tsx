@@ -22,7 +22,7 @@ export function LocationSection() {
             className="aspect-[16/9] rounded-lg bg-gradient-to-br from-paper-sky to-ink-100"
             role="presentation"
           />
-          <p className="mt-3 text-sm text-ink-500">
+          <p className="mt-3 text-sm text-ink-600">
             〒905-0412 沖縄県国頭郡今帰仁村湧川 852-2
           </p>
         </div>

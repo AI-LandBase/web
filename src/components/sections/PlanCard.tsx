@@ -44,7 +44,7 @@ export function PlanCard({
       <p className="mt-2 text-2xl font-bold text-ink-900">
         {priceLabel}
         {priceNote && (
-          <span className="ml-1 text-sm font-normal text-ink-500">
+          <span className="ml-1 text-sm font-normal text-ink-600">
             {priceNote}
           </span>
         )}

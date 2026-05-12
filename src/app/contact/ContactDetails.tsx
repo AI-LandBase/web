@@ -7,7 +7,7 @@ export function ContactDetails() {
       <div>
         <h3 className="text-sm font-bold text-ink-700">メールアドレス</h3>
         <EmailText as="p" className="mt-2 text-base text-ink-900" />
-        <p className="mt-2 text-xs text-ink-500">
+        <p className="mt-2 text-xs text-ink-600">
           件名で内容を判別して、担当が確認します。
         </p>
       </div>
@@ -20,7 +20,7 @@ export function ContactDetails() {
           <br />
           沖縄県国頭郡今帰仁村湧川 852-2
         </p>
-        <p className="mt-2 text-xs text-ink-500">
+        <p className="mt-2 text-xs text-ink-600">
           沖縄北部・Ikigai Stay（ブルーゾーン）が拠点です。
         </p>
       </div>

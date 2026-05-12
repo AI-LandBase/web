@@ -15,13 +15,13 @@ export function AISuiteToolTile({
 }: AISuiteToolTileProps) {
   return (
     <div className="rounded-lg border border-ink-200 bg-paper-pure p-4">
-      <p className="text-xs font-bold text-ink-400">
+      <p className="text-xs font-bold text-ink-600">
         {String(number).padStart(2, "0")}
       </p>
       <h3 className="mt-1 text-sm font-bold leading-snug text-ink-900">
         {name}
       </h3>
-      <p className="mt-0.5 text-xs text-ink-500">{tagline}</p>
+      <p className="mt-0.5 text-xs text-ink-600">{tagline}</p>
       <div className="mt-2 flex flex-wrap gap-1">
         {tags.map((tag) => (
           <span

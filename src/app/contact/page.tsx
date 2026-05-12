@@ -55,7 +55,7 @@ export default function ContactPage() {
       {/* 2. Intent buttons */}
       <Section>
         <h2 className="sr-only">ご相談内容の選択</h2>
-        <p className="mb-10 text-center text-sm font-medium text-ink-500 md:mb-14">
+        <p className="mb-10 text-center text-sm font-medium text-ink-600 md:mb-14">
           ご相談内容をお選びください
         </p>
         <div className="mx-auto grid max-w-[720px] gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -70,7 +70,7 @@ export default function ContactPage() {
             </MailtoButton>
           ))}
         </div>
-        <p className="mt-6 text-center text-xs text-ink-400">
+        <p className="mt-6 text-center text-xs text-ink-600">
           件名はあらかじめ入力されます。本文に状況をご記入のうえご送信ください。
         </p>
       </Section>

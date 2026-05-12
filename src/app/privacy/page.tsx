@@ -171,7 +171,7 @@ export default function PrivacyPage() {
             </table>
           </article>
 
-          <p className="pt-4 text-ink-500">制定日: 2025年6月26日</p>
+          <p className="pt-4 text-ink-600">制定日: 2025年6月26日</p>
         </div>
       </Section>
     </>
