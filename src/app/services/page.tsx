@@ -43,7 +43,7 @@ export default function ServicesPage() {
       {/* 3. Plan details */}
       <Section variant="alt">
         <SectionHeading title="プラン詳細" />
-        <div className="space-y-8">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
           {PLANS.map((plan) => (
             <DetailedPlanCard key={plan.id} {...plan} />
           ))}
