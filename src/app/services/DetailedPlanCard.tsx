@@ -35,28 +35,29 @@ export function DetailedPlanCard({
     <div
       id={id}
       className={cn(
-        "scroll-mt-20 rounded-lg border border-ink-200 bg-paper-pure p-6 md:p-8",
+        "flex flex-col scroll-mt-20 rounded-lg border border-ink-200 bg-paper-pure p-6",
         "border-t-4",
         ACCENT_BORDER[variant],
       )}
     >
       <h3 className={cn("text-sm font-bold", ACCENT_TEXT[variant])}>{name}</h3>
-      <p className="mt-2 text-2xl font-bold text-ink-900">
+      <p className="mt-1 text-lg font-bold text-ink-900">
         {priceLabel}
         {priceNote && (
-          <span className="ml-1 text-sm font-normal text-ink-600">
+          <span className="ml-0.5 text-xs font-normal text-ink-600">
             {priceNote}
           </span>
         )}
       </p>
-      <p className="mt-3 text-sm leading-relaxed text-ink-600">{description}</p>
 
-      <h4 className="mt-6 text-sm font-bold text-ink-800">サービス内容</h4>
-      <ul className="mt-2 space-y-2">
+      <p className="mt-2 text-sm leading-relaxed text-ink-600">{description}</p>
+
+      <h4 className="mt-5 text-sm font-bold text-ink-800">サービス内容</h4>
+      <ul className="mt-2 space-y-1.5">
         {features.map((f) => (
           <li key={f} className="flex items-start gap-2 text-sm text-ink-700">
             <Check
-              size={16}
+              size={14}
               strokeWidth={2}
               className={cn("mt-0.5 shrink-0", ACCENT_TEXT[variant])}
               aria-hidden="true"
@@ -67,13 +68,13 @@ export function DetailedPlanCard({
       </ul>
 
       {useCases && useCases.length > 0 && (
-        <div className="mt-5">
+        <div className="mt-4">
           <h4 className="text-sm font-bold text-ink-800">活用シーン</h4>
-          <div className="mt-2 flex flex-wrap gap-2">
+          <div className="mt-2 flex flex-wrap gap-1.5">
             {useCases.map((uc) => (
               <span
                 key={uc}
-                className="rounded-full bg-ink-100 px-3 py-1 text-xs font-medium text-ink-700"
+                className="rounded-full bg-ink-100 px-2.5 py-0.5 text-xs font-medium text-ink-700"
               >
                 {uc}
               </span>
@@ -83,7 +84,7 @@ export function DetailedPlanCard({
       )}
 
       {note && (
-        <p className="mt-4 text-sm leading-relaxed text-ink-600">{note}</p>
+        <p className="mt-3 text-xs leading-relaxed text-ink-600">{note}</p>
       )}
 
       {externalLink && (
@@ -97,14 +98,15 @@ export function DetailedPlanCard({
         </a>
       )}
 
-      <p className="mt-4 text-xs text-ink-600">
-        対象業種: {targetIndustry}
-      </p>
-
-      <div className="mt-6">
-        <MailtoButton variant="ghost" subject={subject}>
-          メールで相談する
-        </MailtoButton>
+      <div className="mt-auto pt-5">
+        <p className="text-xs text-ink-600">
+          対象業種: {targetIndustry}
+        </p>
+        <div className="mt-3">
+          <MailtoButton variant="ghost" subject={subject}>
+            メールで相談する
+          </MailtoButton>
+        </div>
       </div>
     </div>
   );
