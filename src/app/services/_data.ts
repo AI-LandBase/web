@@ -104,11 +104,24 @@ export const PLANS: readonly PlanData[] = [
   },
 ];
 
+export type AISuiteToolIcon =
+  | "BarChart3"
+  | "BadgeJapaneseYen"
+  | "MessageCircle"
+  | "Heart"
+  | "Star"
+  | "Megaphone"
+  | "Settings"
+  | "Receipt"
+  | "Package"
+  | "GraduationCap";
+
 export const AI_SUITE_TOOLS = [
   {
     number: 1,
     name: "AnalyticsAI",
     tagline: "経営データの見える化",
+    icon: "BarChart3" as AISuiteToolIcon,
     tags: ["共通"],
     description:
       "予約数・売上・稼働率をわかりやすいグラフで表示。経営レポートの自動作成や、将来の傾向予測で経営判断をサポートします。",
@@ -117,6 +130,7 @@ export const AI_SUITE_TOOLS = [
     number: 2,
     name: "OptimaPriceAI",
     tagline: "料金の最適化",
+    icon: "BadgeJapaneseYen" as AISuiteToolIcon,
     tags: ["宿泊"],
     description:
       "需要予測をもとに客室料金をリアルタイムで調整。競合の価格動向もモニタリングし、収益を最大化します。",
@@ -125,6 +139,7 @@ export const AI_SUITE_TOOLS = [
     number: 3,
     name: "ConciergeAI",
     tagline: "多言語の自動応答",
+    icon: "MessageCircle" as AISuiteToolIcon,
     tags: ["共通"],
     description:
       "17 言語に対応した自動応答で、ゲストからの問い合わせに 24 時間対応。周辺の観光スポットや飲食店の案内もおまかせください。",
@@ -133,6 +148,7 @@ export const AI_SUITE_TOOLS = [
     number: 4,
     name: "PersonalizeAI",
     tagline: "リピーター育成",
+    icon: "Heart" as AISuiteToolIcon,
     tags: ["共通"],
     description:
       "ゲストの利用履歴をもとにプロファイルを作成し、一人ひとりに合った特典やおすすめを自動で提案。リピーターの獲得につなげます。",
@@ -141,6 +157,7 @@ export const AI_SUITE_TOOLS = [
     number: 5,
     name: "ReputationAI",
     tagline: "口コミ管理",
+    icon: "Star" as AISuiteToolIcon,
     tags: ["共通"],
     description:
       "複数の予約サイトやレビューサイトから口コミを一括収集。感情分析で傾向を把握し、返信文のたたき台も自動生成します。",
@@ -149,6 +166,7 @@ export const AI_SUITE_TOOLS = [
     number: 6,
     name: "MarketingAI",
     tagline: "集客の最適化",
+    icon: "Megaphone" as AISuiteToolIcon,
     tags: ["共通"],
     description:
       "顧客セグメントの分析や、OTA（予約サイト）と自社サイトの使い分け戦略を提案。どこに注力すべきかが見えてきます。",
@@ -157,6 +175,7 @@ export const AI_SUITE_TOOLS = [
     number: 7,
     name: "OperationAI",
     tagline: "業務の自動化",
+    icon: "Settings" as AISuiteToolIcon,
     tags: ["共通"],
     description:
       "スタッフのシフト調整、清掃スケジュールの作成、備品の在庫管理など、日々のオペレーション業務を効率化します。",
@@ -165,6 +184,7 @@ export const AI_SUITE_TOOLS = [
     number: 8,
     name: "AccountingAI",
     tagline: "経理の自動化",
+    icon: "Receipt" as AISuiteToolIcon,
     tags: ["飲食", "共通"],
     description:
       "レシートや請求書を読み取り、仕訳データを自動作成。freee やマネーフォワードとの連携で、手入力の手間を大幅に減らします。",
@@ -173,6 +193,7 @@ export const AI_SUITE_TOOLS = [
     number: 9,
     name: "InventoryAI",
     tagline: "在庫の最適管理",
+    icon: "Package" as AISuiteToolIcon,
     tags: ["飲食", "共通"],
     description:
       "消耗品の使用量を予測し、不足する前に発注を提案。食材ロスの削減にも役立ちます。",
@@ -181,6 +202,7 @@ export const AI_SUITE_TOOLS = [
     number: 10,
     name: "StaffEduAI",
     tagline: "スタッフ教育",
+    icon: "GraduationCap" as AISuiteToolIcon,
     tags: ["共通"],
     description:
       "オンライン学習コンテンツの提供、サービス品質の評価、シミュレーション研修で、スタッフの成長を支援します。",
