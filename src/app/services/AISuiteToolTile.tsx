@@ -1,7 +1,35 @@
+import {
+  BarChart3,
+  BadgeJapaneseYen,
+  MessageCircle,
+  Heart,
+  Star,
+  Megaphone,
+  Settings,
+  Receipt,
+  Package,
+  GraduationCap,
+} from "lucide-react";
+import type { AISuiteToolIcon } from "./_data";
+
+const ICON_MAP = {
+  BarChart3,
+  BadgeJapaneseYen,
+  MessageCircle,
+  Heart,
+  Star,
+  Megaphone,
+  Settings,
+  Receipt,
+  Package,
+  GraduationCap,
+} as const satisfies Record<AISuiteToolIcon, React.ComponentType<{ size?: number; className?: string }>>;
+
 type AISuiteToolTileProps = {
   number: number;
   name: string;
   tagline: string;
+  icon: AISuiteToolIcon;
   tags: readonly string[];
   description: string;
 };
@@ -10,15 +38,21 @@ export function AISuiteToolTile({
   number,
   name,
   tagline,
+  icon,
   tags,
   description,
 }: AISuiteToolTileProps) {
+  const Icon = ICON_MAP[icon];
+
   return (
     <div className="rounded-lg border border-ink-200 bg-paper-pure p-4">
-      <p className="text-xs font-bold text-ink-600">
-        {String(number).padStart(2, "0")}
-      </p>
-      <h3 className="mt-1 text-sm font-bold leading-snug text-ink-900">
+      <div className="flex items-center gap-2">
+        <Icon size={28} className="shrink-0 text-sea-600" aria-hidden="true" />
+        <p className="text-xs font-bold text-ink-600">
+          {String(number).padStart(2, "0")}
+        </p>
+      </div>
+      <h3 className="mt-2 text-sm font-bold leading-snug text-ink-900">
         {name}
       </h3>
       <p className="mt-0.5 text-xs text-ink-600">{tagline}</p>
