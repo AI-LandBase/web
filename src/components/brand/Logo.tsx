@@ -8,10 +8,9 @@ type LogoProps = {
   ariaLabel?: string;
 };
 
-const HEIGHT = { sm: 24, md: 32, lg: 40 };
+const HEIGHT = { sm: 32, md: 44, lg: 52 };
+const TEXT_SIZE = { sm: "text-base", md: "text-lg", lg: "text-xl" };
 
-// v1: inverted SVG 未作成のため全 variant で logo.png を使用。
-// logo-inverted.svg が用意されたら SRC_MAP に追加し CSS filter を使わずアセットで切り替える。
 const SRC = "/logo/logo.png";
 
 export function Logo({
@@ -22,25 +21,32 @@ export function Logo({
 }: LogoProps) {
   const h = HEIGHT[size];
 
-  const img = (
-    <Image
-      src={SRC}
-      alt={ariaLabel}
-      height={h}
-      width={Math.round(h * 4.4)}
-      priority
-      style={{ height: `${h}px`, width: "auto" }}
-      data-variant={variant}
-    />
+  const content = (
+    <span className="inline-flex items-center gap-2">
+      <Image
+        src={SRC}
+        alt=""
+        height={h}
+        width={h}
+        priority
+        style={{ height: `${h}px`, width: `${h}px` }}
+        data-variant={variant}
+      />
+      <span
+        className={`${TEXT_SIZE[size]} font-bold ${variant === "inverted" ? "text-paper-pure" : "text-ink-900"}`}
+      >
+        AI.LandBase
+      </span>
+    </span>
   );
 
   if (href) {
     return (
-      <Link href={href} className="inline-flex items-center">
-        {img}
+      <Link href={href} className="inline-flex items-center" aria-label={ariaLabel}>
+        {content}
       </Link>
     );
   }
 
-  return img;
+  return content;
 }

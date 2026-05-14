@@ -1,6 +1,5 @@
 import { Check } from "lucide-react";
 import { cn } from "@/lib/cn";
-import { MailtoButton } from "@/components/cta/MailtoButton";
 import type { PlanData } from "./_data";
 
 type DetailedPlanCardProps = Omit<PlanData, "shortName" | "comparison">;
@@ -12,9 +11,9 @@ const ACCENT_TEXT = {
 } as const;
 
 const ACCENT_BORDER = {
-  standard: "border-t-plan-standard",
-  professional: "border-t-plan-professional",
-  server: "border-t-plan-server",
+  standard: "border-l-plan-standard",
+  professional: "border-l-plan-professional",
+  server: "border-l-plan-server",
 } as const;
 
 export function DetailedPlanCard({
@@ -35,16 +34,16 @@ export function DetailedPlanCard({
     <div
       id={id}
       className={cn(
-        "flex flex-col scroll-mt-20 rounded-lg border border-ink-200 bg-paper-pure p-6",
-        "border-t-4",
+        "flex flex-col scroll-mt-20 rounded-xl border border-ink-200 bg-paper-pure p-6",
+        "border-l-4",
         ACCENT_BORDER[variant],
       )}
     >
-      <h3 className={cn("text-sm font-bold", ACCENT_TEXT[variant])}>{name}</h3>
-      <p className="mt-1 text-lg font-bold text-ink-900">
+      <h3 className={cn("text-base font-bold", ACCENT_TEXT[variant])}>{name}</h3>
+      <p className="mt-1 text-2xl font-bold text-ink-900">
         {priceLabel}
         {priceNote && (
-          <span className="ml-0.5 text-xs font-normal text-ink-600">
+          <span className="ml-1 text-sm font-normal text-ink-600">
             {priceNote}
           </span>
         )}
@@ -102,11 +101,6 @@ export function DetailedPlanCard({
         <p className="text-xs text-ink-600">
           対象業種: {targetIndustry}
         </p>
-        <div className="mt-3">
-          <MailtoButton variant="ghost" subject={subject}>
-            メールで相談する
-          </MailtoButton>
-        </div>
       </div>
     </div>
   );

@@ -31,6 +31,7 @@ const PLANS = [
     variant: "standard" as const,
     name: "スタンダードプラン",
     priceLabel: "月額 5 万円",
+    priceDisplay: { prefix: "月額", main: "5", suffix: "万円", mainClass: "text-5xl" },
     description:
       "AI ツールの活用と毎月のオンライン面談で、データに基づく経営改善を始められます。",
     href: "/services#standard",
@@ -39,6 +40,7 @@ const PLANS = [
     variant: "professional" as const,
     name: "プロフェッショナルプラン",
     priceLabel: "個別見積",
+    priceDisplay: { main: "個別見積", mainClass: "text-3xl" },
     description:
       "現地での指導やカスタム AI 開発を含む、包括的な経営改善パッケージです。",
     href: "/services#professional",
@@ -48,8 +50,9 @@ const PLANS = [
     name: "AI Suite Server プラン",
     priceLabel: "¥1,965,000",
     priceNote: "（税別・一式）",
+    priceDisplay: { main: "¥1,965,000", mainClass: "text-3xl" },
     description:
-      "AI ツール一式と導入機器をまとめたオールインワンパッケージ。沖縄県の補助金を活用できる場合があります。",
+      "自社環境での本格的な運用に。オンプレミス型で高いセキュリティと柔軟なカスタマイズが可能です。",
     href: "/services#server",
   },
 ] as const;
@@ -103,6 +106,7 @@ export default function Home() {
         variant="media"
         headline="沖縄の観光業に、AI という伴走者を。"
         lead="人手不足、データ活用、収益の安定化——日々の課題に向き合う事業者のそばで、AI テクノロジーが経営を支えます。地元・沖縄北部に拠点を置く AI.LandBase が、現場に寄り添いながらお手伝いします。"
+        imageSrc="/images/ikigai-stay.jpg"
         cta={{
           label: "メールで相談する",
           subject: "[AI.LandBase] サービスに関するお問い合わせ",
@@ -155,6 +159,8 @@ export default function Home() {
         ]}
         linkLabel="会社案内を見る →"
         linkHref="/about"
+        imageSrc="/images/ikigai-stay.jpg"
+        imageAlt="Ikigai Stay — 沖縄県今帰仁村の自社宿泊施設"
       />
 
       {/* 6. CTA */}

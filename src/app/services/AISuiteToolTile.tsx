@@ -32,6 +32,8 @@ type AISuiteToolTileProps = {
   icon: AISuiteToolIcon;
   tags: readonly string[];
   description: string;
+  shortDescription?: string;
+  compact?: boolean;
 };
 
 export function AISuiteToolTile({
@@ -41,13 +43,16 @@ export function AISuiteToolTile({
   icon,
   tags,
   description,
+  shortDescription,
+  compact = false,
 }: AISuiteToolTileProps) {
   const Icon = ICON_MAP[icon];
+  const displayDescription = compact && shortDescription ? shortDescription : description;
 
   return (
     <div className="rounded-lg border border-ink-200 bg-paper-pure p-4">
       <div className="flex items-center gap-2">
-        <Icon size={28} className="shrink-0 text-sea-600" aria-hidden="true" />
+        <Icon size={compact ? 22 : 28} className="shrink-0 text-sea-600" aria-hidden="true" />
         <p className="text-xs font-bold text-ink-600">
           {String(number).padStart(2, "0")}
         </p>
@@ -66,7 +71,9 @@ export function AISuiteToolTile({
           </span>
         ))}
       </div>
-      <p className="mt-2 text-xs leading-relaxed text-ink-600">{description}</p>
+      <p className="mt-2 text-xs leading-relaxed text-ink-600">
+        {displayDescription}
+      </p>
     </div>
   );
 }

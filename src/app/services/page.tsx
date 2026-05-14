@@ -3,7 +3,6 @@ import { Hero } from "@/components/sections/Hero";
 import { Section } from "@/components/primitives/Section";
 import { SectionHeading } from "@/components/primitives/SectionHeading";
 import { CTASection } from "@/components/cta/CTASection";
-import { MailtoButton } from "@/components/cta/MailtoButton";
 import { ComparisonTable } from "./ComparisonTable";
 import { DetailedPlanCard } from "./DetailedPlanCard";
 import { SpotServiceTable } from "./SpotServiceTable";
@@ -28,16 +27,8 @@ export default function ServicesPage() {
 
       {/* 2. Comparison */}
       <Section>
-        <SectionHeading title="プラン一覧" />
+        <SectionHeading title="プラン比較表" />
         <ComparisonTable />
-        <div className="mt-8 text-center">
-          <MailtoButton
-            variant="primary"
-            subject="[AI.LandBase] サービスに関するお問い合わせ"
-          >
-            メールで相談する
-          </MailtoButton>
-        </div>
       </Section>
 
       {/* 3. Plan details */}
@@ -50,32 +41,44 @@ export default function ServicesPage() {
         </div>
       </Section>
 
-      {/* 4. Spot services */}
+      {/* 4. Spot services + AI Suite tools (side by side on desktop) */}
       <Section>
-        <SectionHeading
-          title="スポット発注（施設管理代行）"
-          lead="月額契約とは別に、必要な業務だけをスポットでご依頼いただけます。繁忙期の人手不足や急な対応が必要な場面でご活用ください。"
-        />
-        <div className="mx-auto max-w-[720px]">
-          <SpotServiceTable />
-        </div>
-      </Section>
-
-      {/* 5. AI Suite tools */}
-      <Section variant="alt">
-        <SectionHeading
-          title="LandBase AI Suite — 10 のツールで経営を支える"
-          lead="予約管理から経理、スタッフ教育まで。AI Suite は、観光業の日常業務を幅広くカバーする 10 のツールで構成されています。"
-        />
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5">
-          {AI_SUITE_TOOLS.map((tool) => (
-            <AISuiteToolTile key={tool.number} {...tool} />
-          ))}
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_3fr]">
+          <div>
+            <h2 className="text-xl font-bold text-ink-900">
+              スポット発注（施設管理代行）
+            </h2>
+            <p className="mt-2 text-sm leading-relaxed text-ink-600">
+              必要なときに、必要な分だけご利用いただけるスポットサービスです。
+            </p>
+            <div className="mt-6">
+              <SpotServiceTable />
+            </div>
+          </div>
+          <div>
+            <h2 className="text-xl font-bold text-ink-900">
+              LandBase AI Suite — 10 のツールで経営を支える
+            </h2>
+            <p className="mt-2 text-sm leading-relaxed text-ink-600">
+              データ分析から業務効率化、顧客体験向上まで、観光業のあらゆる課題を支援する 10 の AI ツールをご用意しています。
+            </p>
+            <div className="mt-6 grid grid-cols-2 gap-3 lg:grid-cols-5">
+              {AI_SUITE_TOOLS.map((tool) => (
+                <AISuiteToolTile key={tool.number} {...tool} compact />
+              ))}
+            </div>
+          </div>
         </div>
       </Section>
 
       {/* 6. CTA */}
-      <CTASection />
+      <CTASection
+        heading="プランについて、ご相談ください"
+        subheading="お客様の事業に合ったプランを一緒に考えます。お気軽にお問い合わせください。"
+        buttons={[
+          { label: "メールで相談する", subject: "[AI.LandBase] サービスに関するお問い合わせ" },
+        ]}
+      />
     </>
   );
 }

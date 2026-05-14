@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Section } from "@/components/primitives/Section";
 import { SectionHeading } from "@/components/primitives/SectionHeading";
 
@@ -18,10 +19,14 @@ export function LocationSection() {
           </p>
         </div>
         <div className="mt-8">
-          <div
-            className="aspect-[16/9] rounded-lg bg-gradient-to-br from-paper-sky to-ink-100"
-            role="presentation"
-          />
+          <div className="relative aspect-[16/9] overflow-hidden rounded-lg">
+            <Image
+              src="/images/ikigai-stay.jpg"
+              alt="Ikigai Stay — 沖縄県今帰仁村の自社宿泊施設"
+              fill
+              className="object-cover"
+            />
+          </div>
           <p className="mt-3 text-sm text-ink-600">
             〒905-0412 沖縄県国頭郡今帰仁村湧川 852-2
           </p>
