@@ -19,6 +19,12 @@ export type PlanData = {
     audience: string;
     aiSuite: string;
     support: string;
+    priceDisplay: {
+      prefix?: string;
+      main: string;
+      suffix?: string;
+      mainClass?: string;
+    };
   };
 };
 
@@ -44,6 +50,7 @@ export const PLANS: readonly PlanData[] = [
       audience: "AI ツールを試してみたい方",
       aiSuite: "ソフト利用",
       support: "月次オンライン面談",
+      priceDisplay: { prefix: "月額", main: "5", suffix: "万円", mainClass: "text-5xl" },
     },
   },
   {
@@ -69,6 +76,7 @@ export const PLANS: readonly PlanData[] = [
       audience: "経営全体の改善に取り組みたい方",
       aiSuite: "ソフト利用 + カスタム開発",
       support: "現地指導 + オンライン",
+      priceDisplay: { main: "個別見積", mainClass: "text-3xl" },
     },
   },
   {
@@ -100,6 +108,7 @@ export const PLANS: readonly PlanData[] = [
       audience: "自社設備で AI を完結運用したい方",
       aiSuite: "ソフト + 導入機器一式",
       support: "導入サポート",
+      priceDisplay: { main: "¥1,965,000", mainClass: "text-3xl" },
     },
   },
 ];

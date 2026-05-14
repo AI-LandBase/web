@@ -46,13 +46,14 @@ export function AsymmetricMediaSection({
           </div>
           <div className="md:w-3/5">
             {imageSrc ? (
-              <Image
-                src={imageSrc}
-                alt={imageAlt}
-                width={720}
-                height={480}
-                className="rounded-lg object-cover md:rounded-xl"
-              />
+              <div className="relative aspect-[3/2] overflow-hidden rounded-lg md:rounded-xl">
+                <Image
+                  src={imageSrc}
+                  alt={imageAlt}
+                  fill
+                  className="object-cover"
+                />
+              </div>
             ) : (
               <div
                 className="aspect-[3/2] rounded-lg bg-gradient-to-br from-paper-sky to-ink-100 md:rounded-xl"

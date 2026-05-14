@@ -3,7 +3,6 @@ import { Hero } from "@/components/sections/Hero";
 import { Section } from "@/components/primitives/Section";
 import { SectionHeading } from "@/components/primitives/SectionHeading";
 import { CTASection } from "@/components/cta/CTASection";
-import { MailtoButton } from "@/components/cta/MailtoButton";
 import { ComparisonTable } from "./ComparisonTable";
 import { DetailedPlanCard } from "./DetailedPlanCard";
 import { SpotServiceTable } from "./SpotServiceTable";
@@ -21,7 +20,7 @@ export default function ServicesPage() {
     <>
       {/* 1. Hero */}
       <Hero
-        variant="soft"
+        variant="dark"
         headline="サービス"
         lead="AI.LandBase は、沖縄の観光業に特化した AI ツールと経営支援を提供しています。事業の規模やご要望に合わせて、3 つのプランからお選びいただけます。"
       />
@@ -30,14 +29,6 @@ export default function ServicesPage() {
       <Section>
         <SectionHeading title="プラン比較表" />
         <ComparisonTable />
-        <div className="mt-8 text-center">
-          <MailtoButton
-            variant="primary"
-            subject="[AI.LandBase] サービスに関するお問い合わせ"
-          >
-            メールで相談する
-          </MailtoButton>
-        </div>
       </Section>
 
       {/* 3. Plan details */}
@@ -81,7 +72,13 @@ export default function ServicesPage() {
       </Section>
 
       {/* 6. CTA */}
-      <CTASection />
+      <CTASection
+        heading="プランについて、ご相談ください"
+        subheading="お客様の事業に合ったプランを一緒に考えます。お気軽にお問い合わせください。"
+        buttons={[
+          { label: "メールで相談する", subject: "[AI.LandBase] サービスに関するお問い合わせ" },
+        ]}
+      />
     </>
   );
 }
