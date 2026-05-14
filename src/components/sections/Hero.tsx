@@ -1,10 +1,9 @@
 import Image from "next/image";
 import { Container } from "@/components/primitives/Container";
 import { MailtoButton } from "@/components/cta/MailtoButton";
-import { cn } from "@/lib/cn";
 
 type HeroProps = {
-  variant: "media" | "soft" | "dark";
+  variant: "media" | "soft";
   headline: string;
   lead: string;
   imageSrc?: string;
@@ -61,33 +60,11 @@ export function Hero({ variant, headline, lead, imageSrc, cta }: HeroProps) {
     );
   }
 
-  if (variant === "dark") {
-    return (
-      <section className="bg-ink-100 py-16 md:py-20 lg:py-24">
-        <Container>
-          <div className="max-w-[48rem]">
-            <h1 className="text-4xl font-bold leading-[1.3] text-ink-900 md:text-5xl">
-              {headline}
-            </h1>
-            <p className="mt-6 text-lg leading-relaxed text-ink-700">
-              {lead}
-            </p>
-          </div>
-        </Container>
-      </section>
-    );
-  }
-
   return (
-    <section
-      className={cn(
-        "bg-gradient-to-br from-paper-mist to-paper-sky",
-        "py-16 md:py-20 lg:py-24",
-      )}
-    >
+    <section className="bg-ink-100 py-16 md:py-20 lg:py-24">
       <Container>
-        <div className="max-w-[36rem]">
-          <h1 className="text-4xl font-bold leading-[1.3] md:text-5xl">
+        <div className="max-w-[48rem]">
+          <h1 className="text-4xl font-bold leading-[1.3] text-ink-900 md:text-5xl">
             {headline}
           </h1>
           <p className="mt-6 text-lg leading-relaxed text-ink-700">{lead}</p>

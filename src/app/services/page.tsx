@@ -20,7 +20,7 @@ export default function ServicesPage() {
     <>
       {/* 1. Hero */}
       <Hero
-        variant="dark"
+        variant="soft"
         headline="サービス"
         lead="AI.LandBase は、沖縄の観光業に特化した AI ツールと経営支援を提供しています。事業の規模やご要望に合わせて、3 つのプランからお選びいただけます。"
       />
