@@ -8,16 +8,12 @@ const HEADER_COLOR: Record<PlanVariant, string> = {
   server: "bg-plan-server-soft text-plan-server",
 };
 
-function priceDisplay(plan: (typeof PLANS)[number]): string {
-  const note = plan.priceNote ? plan.priceNote : "";
-  return `${plan.priceLabel}${note}`;
-}
-
 const ROWS = PLANS.map((p) => ({
   variant: p.variant,
   shortName: p.shortName,
+  priceLabel: p.priceLabel,
+  priceNote: p.priceNote,
   cells: {
-    料金: priceDisplay(p),
     形態: p.comparison.format,
     こんな方に: p.comparison.audience,
     "AI Suite": p.comparison.aiSuite,
@@ -56,10 +52,33 @@ export function ComparisonTable() {
             </tr>
           </thead>
           <tbody>
+            {/* Price row — visually emphasized */}
+            <tr className="bg-paper-pure">
+              <th scope="row" className="p-3 text-left font-bold text-ink-700">
+                料金
+              </th>
+              {ROWS.map((row) => (
+                <td
+                  key={row.variant}
+                  className="p-4 text-center"
+                >
+                  <span className="text-xl font-bold text-ink-900">
+                    {row.priceLabel}
+                  </span>
+                  {row.priceNote && (
+                    <span className="mt-0.5 block text-xs text-ink-600">
+                      {row.priceNote}
+                    </span>
+                  )}
+                </td>
+              ))}
+            </tr>
+
+            {/* Regular rows */}
             {ROW_LABELS.map((label, i) => (
               <tr
                 key={label}
-                className={i % 2 === 0 ? "bg-paper-pure" : "bg-paper-soft"}
+                className={i % 2 === 1 ? "bg-paper-pure" : "bg-paper-soft"}
               >
                 <th scope="row" className="p-3 text-left font-bold text-ink-700">
                   {label}
@@ -83,7 +102,7 @@ export function ComparisonTable() {
         {ROWS.map((row) => (
           <div
             key={row.variant}
-            className="rounded-lg border border-ink-200 bg-paper-pure overflow-hidden"
+            className="overflow-hidden rounded-lg border border-ink-200 bg-paper-pure"
           >
             <div
               className={cn(
@@ -94,6 +113,19 @@ export function ComparisonTable() {
               {row.shortName}
             </div>
             <dl className="divide-y divide-ink-100 px-4">
+              <div className="flex items-baseline justify-between gap-2 py-3">
+                <dt className="text-sm font-bold text-ink-700">料金</dt>
+                <dd className="text-right">
+                  <span className="text-lg font-bold text-ink-900">
+                    {row.priceLabel}
+                  </span>
+                  {row.priceNote && (
+                    <span className="ml-1 text-xs text-ink-600">
+                      {row.priceNote}
+                    </span>
+                  )}
+                </dd>
+              </div>
               {ROW_LABELS.map((label) => (
                 <div
                   key={label}

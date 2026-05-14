@@ -119,12 +119,11 @@ Reference: `services-desktop.png`.
 | # | Section ID | Pattern | Purpose |
 |---|---|---|---|
 | 1 | `hero` | fullBleedColor (soft) | Page title + 1-paragraph intro. |
-| 2 | `comparison` | constrained | The 3-plan comparison table — info-dense decision aid. |
-| 3 | `plan-cards` | constrained | Per-plan detailed cards (features checklist, plan-specific CTA). |
-| 4 | `spot` | constrained | スポット発注 price table. |
-| 5 | `suite` | constrained | LandBase AI Suite 10-tool grid. |
-| 6 | `cta` | fullBleedColor | Same as top-page CTA. |
-| 7 | `footer` | fullBleedColor | |
+| 2 | `comparison` | constrained | The 3-plan comparison table — info-dense decision aid. Price row visually emphasized (larger font). |
+| 3 | `plan-cards` | constrained | Per-plan detailed cards in **3-column grid** (features checklist, plan-specific CTA). |
+| 4 | `spot-and-suite` | constrained | **2-column layout (1:3 ratio)**: left = スポット発注 price table, right = AI Suite 10-tool grid (5-col). Mobile: stacked 1-col. |
+| 5 | `cta` | fullBleedColor | Same as top-page CTA. |
+| 6 | `footer` | fullBleedColor | |
 
 ### 1. `hero` — `<Hero variant="soft">`
 
@@ -137,8 +136,9 @@ Reference: `services-desktop.png`.
 ### 2. `comparison` — `<ComparisonTable>`
 
 - **Section heading**: `プラン比較表` (H2, centered)
+- **Price row**: visually emphasized — larger font (`text-xl font-bold`), price note on separate line in smaller text. This row is separated from the regular comparison rows.
 - **Table rows** (in order):
-  1. 料金 — `月額 5 万円` / `個別見積` / `¥1,965,000 (税別・一式)`
+  1. 料金 — `月額 5 万円` / `個別見積` / `¥1,965,000 (税別・一式)` — **emphasized row**
   2. 形態 — `月額制 (サブスクリプション)` / `個別見積 (法人・団体向け)` / `買い切り (オンプレミス)`
   3. こんな方に — `小規模事業者・個人事業主 まずは AI を試したい方` / `独自の業務フローに合わせて柔軟に導入したい方` / `セキュリティ要件が厳しい大型施設・行政・団体`
   4. AI Suite — `10 ツールすべて利用可能` / `10 ツールすべて利用可能` / `10 ツールすべて利用可能 (自社サーバーで運用)`
@@ -146,7 +146,9 @@ Reference: `services-desktop.png`.
   6. 主な対象業種 — `宿泊施設 / 飲食店 / ツアー・アクティビティ会社` / `宿泊施設 / 飲食店 / ツアー・アクティビティ会社 など` / `宿泊施設 / 飲食店 / 行政 / DMO・観光協会 など`
 - **CTA below table**: `<MailtoButton variant="primary">メールで相談する</MailtoButton>`
 
-### 3. `plan-cards` — 3 detailed `<PlanCard size="detailed">` cards
+### 3. `plan-cards` — 3 detailed `<DetailedPlanCard>` in a **3-column grid** (`md:grid-cols-3`)
+
+**Layout**: 3-column grid on desktop, 1-column on mobile. Cards use `flex flex-col` with `mt-auto` to align CTAs at the bottom. Plan name in accent color, price on a separate line below.
 
 Each card shows:
 - Plan name with accent-color title + price line
@@ -182,9 +184,13 @@ Each card shows:
 - Note paragraph: `沖縄県の補助金制度を活用できる場合があります。詳細はお気軽にご相談ください。`
 - Link: `宿泊税対応の詳細はこちら →` → `https://lodging-tax.ai-landbase.jp/lp/okinawa-lodging-tax/`
 
-### 4. `spot` — `<SpotServiceTable>`
+### 4. `spot-and-suite` — Side-by-side layout
 
-- **Section heading**: `スポット発注 (施設管理代行)` (H3 — sub-section, not main)
+**Layout**: `grid lg:grid-cols-[1fr_3fr]` — left column (~25%) for spot services, right column (~75%) for AI Suite tools. On mobile: stacked vertically, spot first.
+
+#### Left: `<SpotServiceTable>`
+
+- **Heading** (H2): `スポット発注（施設管理代行）`
 - **Lead**: `必要なときに、必要な分だけご利用いただけるスポットサービスです。`
 - **Table rows**:
   | サービス内容 | 料金 |
@@ -195,16 +201,15 @@ Each card shows:
   | カスタム AI 開発 | 別途見積 |
 - **Footnote** (caption): `※宿泊業向け料金体系。飲食・ツアー向けスポット料金はお問い合わせください。`
 
-### 5. `suite` — AI Suite 10-tool grid
+#### Right: AI Suite 10-tool grid
 
-- **Section heading** (H2): `LandBase AI Suite — 10 のツールで経営を支える`
+- **Heading** (H2): `LandBase AI Suite — 10 のツールで経営を支える`
 - **Lead**: `データ分析から業務効率化、顧客体験向上まで、観光業のあらゆる課題を支援する 10 の AI ツールをご用意しています。`
-- **Body**: Ten `<AISuiteToolTile>` tiles in a responsive grid (2 cols mobile / 3 cols tablet / 5 cols desktop).
-- Tile content per BRIEF.md §1 (LandBase AI Suite table).
+- **Body**: Ten `<AISuiteToolTile compact>` tiles in 5-col grid (desktop) / 2-col (mobile). Compact mode uses `shortDescription` (1-sentence summary) instead of full description.
 
-### 6. `cta` — Same `<CTASection>` as top page.
+### 5. `cta` — Same `<CTASection>` as top page.
 
-### 7. `footer` — `<Footer>`.
+### 6. `footer` — `<Footer>`.
 
 ---
 

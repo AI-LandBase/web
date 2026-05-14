@@ -125,6 +125,8 @@ export const AI_SUITE_TOOLS = [
     tags: ["共通"],
     description:
       "予約数・売上・稼働率をわかりやすいグラフで表示。経営レポートの自動作成や、将来の傾向予測で経営判断をサポートします。",
+    shortDescription:
+      "各種データを統合・分析し、経営判断を支援するダッシュボードを提供。",
   },
   {
     number: 2,
@@ -134,6 +136,8 @@ export const AI_SUITE_TOOLS = [
     tags: ["宿泊"],
     description:
       "需要予測をもとに客室料金をリアルタイムで調整。競合の価格動向もモニタリングし、収益を最大化します。",
+    shortDescription:
+      "需要と競合を分析し、最適な価格設定を自動で提案。",
   },
   {
     number: 3,
@@ -143,6 +147,8 @@ export const AI_SUITE_TOOLS = [
     tags: ["共通"],
     description:
       "17 言語に対応した自動応答で、ゲストからの問い合わせに 24 時間対応。周辺の観光スポットや飲食店の案内もおまかせください。",
+    shortDescription:
+      "顧客からの問い合わせに 24 時間対応する AI コンシェルジュ。",
   },
   {
     number: 4,
@@ -152,6 +158,8 @@ export const AI_SUITE_TOOLS = [
     tags: ["共通"],
     description:
       "ゲストの利用履歴をもとにプロファイルを作成し、一人ひとりに合った特典やおすすめを自動で提案。リピーターの獲得につなげます。",
+    shortDescription:
+      "顧客の行動履歴をもとに、最適な提案でリピーターを育成。",
   },
   {
     number: 5,
@@ -161,6 +169,8 @@ export const AI_SUITE_TOOLS = [
     tags: ["共通"],
     description:
       "複数の予約サイトやレビューサイトから口コミを一括収集。感情分析で傾向を把握し、返信文のたたき台も自動生成します。",
+    shortDescription:
+      "レビューや口コミを分析し、評判向上のための改善提案を提供。",
   },
   {
     number: 6,
@@ -170,6 +180,8 @@ export const AI_SUITE_TOOLS = [
     tags: ["共通"],
     description:
       "顧客セグメントの分析や、OTA（予約サイト）と自社サイトの使い分け戦略を提案。どこに注力すべきかが見えてきます。",
+    shortDescription:
+      "広告運用やキャンペーンの効果を分析し、集客を最大化。",
   },
   {
     number: 7,
@@ -179,6 +191,8 @@ export const AI_SUITE_TOOLS = [
     tags: ["共通"],
     description:
       "スタッフのシフト調整、清掃スケジュールの作成、備品の在庫管理など、日々のオペレーション業務を効率化します。",
+    shortDescription:
+      "業務プロセスを可視化し、運営効率化とコスト削減をサポート。",
   },
   {
     number: 8,
@@ -188,6 +202,8 @@ export const AI_SUITE_TOOLS = [
     tags: ["飲食", "共通"],
     description:
       "レシートや請求書を読み取り、仕訳データを自動作成。freee やマネーフォワードとの連携で、手入力の手間を大幅に減らします。",
+    shortDescription:
+      "売上・経費の自動記帳やレポート作成で、経理業務を効率化。",
   },
   {
     number: 9,
@@ -197,6 +213,8 @@ export const AI_SUITE_TOOLS = [
     tags: ["飲食", "共通"],
     description:
       "消耗品の使用量を予測し、不足する前に発注を提案。食材ロスの削減にも役立ちます。",
+    shortDescription:
+      "在庫の自動管理で、発注最適化と廃棄ロスを削減。",
   },
   {
     number: 10,
@@ -206,5 +224,7 @@ export const AI_SUITE_TOOLS = [
     tags: ["共通"],
     description:
       "オンライン学習コンテンツの提供、サービス品質の評価、シミュレーション研修で、スタッフの成長を支援します。",
+    shortDescription:
+      "スタッフ育成を支援する AI 教材と研修管理ツール。",
   },
 ] as const;
