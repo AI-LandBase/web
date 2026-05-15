@@ -59,12 +59,13 @@ export default function ContactPage() {
           ご相談内容をお選びください
         </p>
         <div className="mx-auto grid max-w-[720px] gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {INTENTS.map((intent) => (
+          {INTENTS.map((intent, index) => (
             <MailtoButton
               key={intent.label}
               variant="ghost"
               subject={intent.subject}
               fullWidth
+              ctaId={`contact-intent-${index}`}
             >
               {intent.label}
             </MailtoButton>

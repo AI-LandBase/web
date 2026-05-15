@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Noto_Sans_JP, Inter } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { SITE_URL, SITE_NAME } from "@/lib/constants";
@@ -45,6 +46,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+
   return (
     <html
       lang="ja"
@@ -59,6 +62,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        {gaMeasurementId && <GoogleAnalytics gaId={gaMeasurementId} />}
       </body>
     </html>
   );

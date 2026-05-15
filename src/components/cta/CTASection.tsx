@@ -31,12 +31,13 @@ export function CTASection({
         </h2>
         <p className="mt-4 text-ink-200">{subheading}</p>
         <div className="mt-10 flex flex-col items-center gap-4 md:flex-row md:justify-center">
-          {buttons.map((btn) => (
+          {buttons.map((btn, index) => (
             <MailtoButton
               key={btn.subject}
               variant="onDark"
               size="lg"
               subject={btn.subject}
+              ctaId={`cta-section-${index}`}
             >
               {btn.label}
             </MailtoButton>

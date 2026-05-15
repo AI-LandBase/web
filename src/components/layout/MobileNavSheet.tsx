@@ -94,6 +94,7 @@ export function MobileNavSheet({ open, onClose }: MobileNavSheetProps) {
             size="lg"
             fullWidth
             subject="[AI.LandBase] サービスに関するお問い合わせ"
+            ctaId="mobile-nav"
           >
             お問い合わせ
           </MailtoButton>
