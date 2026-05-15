@@ -535,11 +535,13 @@ JSON-LD on `/about`:
 
 ## 11. Analytics
 
-Use the official `@next/third-parties/google` package — its `<GoogleAnalytics>` component is a thin wrapper around `next/script` with `afterInteractive` strategy and ships automatic `page_view` firing on App Router navigation (`usePathname` based). This replaces the earlier `next/script` direct-embed note: same runtime behavior, less code, and avoids hand-rolling the SPA `page_view` re-fire.
+GA4 integration is implemented in `src/components/analytics/GoogleAnalytics.tsx` as a self-contained Client Component. We do not depend on `@next/third-parties/google` — verified empirically that its `<GoogleAnalytics>` does **not** fire `page_view` on App Router SPA navigation (only injects `gtag.js`), so SPA tracking has to be hand-rolled either way. Keeping it in one file avoids the extra dependency.
+
+The component loads `gtag.js` with `next/script` (`strategy="afterInteractive"`, do not inject before page becomes interactive — LCP risk) and inlines the standard init snippet (`window.dataLayer`, `gtag('js', new Date())`, `gtag('config', gaId)`). A nested `PageViewTracker` watches `usePathname()` + `useSearchParams()` and fires `gtag('event', 'page_view', { page_path, page_location, page_title })` on every client-side route change. The first mount is skipped via a `useRef` sentinel because `gtag('config', ...)` already sends the initial `page_view`. `useSearchParams` requires a `<Suspense>` boundary, so the tracker is wrapped.
 
 ```tsx
 // src/app/layout.tsx
-import { GoogleAnalytics } from "@next/third-parties/google";
+import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 
 const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 // ...
@@ -548,7 +550,7 @@ const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
 Guard with `process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID` so the tag is omitted when the variable is unset (dev/preview environments).
 
-CTA-click tracking lives in the `MailtoButton` component — `onClick` calls `window.gtag?.('event', 'cta_click', { cta_id })`. Each call site passes a `ctaId` identifying the location (`header`, `footer`, `hero`, `mobile-nav`, `cta-section-{index}`, `contact-intent-{index}`).
+CTA-click tracking lives in the `MailtoButton` component — `onClick` calls `window.gtag?.('event', 'cta_click', { cta_id })`. Each call site passes a `ctaId` identifying the location (`header`, `footer`, `hero`, `mobile-nav`, `cta-section-{index}`, `contact-intent-{index}`). The `window.gtag` and `window.dataLayer` types are declared globally in `src/types/gtag.d.ts`.
 
 ---
 

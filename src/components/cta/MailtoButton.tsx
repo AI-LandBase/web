@@ -4,16 +4,6 @@ import { useEffect, useState } from "react";
 import { Mail } from "lucide-react";
 import { cn } from "@/lib/cn";
 
-declare global {
-  interface Window {
-    gtag?: (
-      command: string,
-      eventName: string,
-      params?: Record<string, unknown>,
-    ) => void;
-  }
-}
-
 type MailtoButtonProps = {
   subject?: string;
   body?: string;
