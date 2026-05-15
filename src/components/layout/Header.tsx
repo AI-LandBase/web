@@ -33,6 +33,7 @@ export function Header() {
             variant="primary"
             size="md"
             subject="[AI.LandBase] サービスに関するお問い合わせ"
+            ctaId="header"
           >
             お問い合わせ
           </MailtoButton>

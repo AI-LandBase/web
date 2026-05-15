@@ -4,6 +4,16 @@ import { useEffect, useState } from "react";
 import { Mail } from "lucide-react";
 import { cn } from "@/lib/cn";
 
+declare global {
+  interface Window {
+    gtag?: (
+      command: string,
+      eventName: string,
+      params?: Record<string, unknown>,
+    ) => void;
+  }
+}
+
 type MailtoButtonProps = {
   subject?: string;
   body?: string;
@@ -11,6 +21,7 @@ type MailtoButtonProps = {
   size?: "md" | "lg";
   fullWidth?: boolean;
   icon?: boolean;
+  ctaId?: string;
   children: React.ReactNode;
 };
 
@@ -24,6 +35,7 @@ export function MailtoButton({
   size = "md",
   fullWidth = false,
   icon = true,
+  ctaId,
   children,
 }: MailtoButtonProps) {
   const [href, setHref] = useState<string | undefined>(undefined);
@@ -35,6 +47,12 @@ export function MailtoButton({
     const qs = params.toString();
     setHref(`mailto:${USER}@${DOMAIN}${qs ? `?${qs}` : ""}`);
   }, [subject, body]);
+
+  const handleClick = ctaId
+    ? () => {
+        window.gtag?.("event", "cta_click", { cta_id: ctaId });
+      }
+    : undefined;
 
   const sizeClass =
     size === "lg" ? "h-13 px-7 text-base" : "h-11 px-5 text-base";
@@ -53,6 +71,7 @@ export function MailtoButton({
   return (
     <Element
       {...(href ? { href } : { type: "button" as const })}
+      onClick={handleClick}
       className={cn(
         "inline-flex items-center justify-center gap-2 rounded-md font-medium",
         "transition-colors duration-150",

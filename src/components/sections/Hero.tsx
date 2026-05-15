@@ -44,7 +44,12 @@ export function Hero({ variant, headline, lead, imageSrc, cta }: HeroProps) {
             </p>
             {cta && (
               <div className="mt-8">
-                <MailtoButton variant="primary" size="lg" subject={cta.subject}>
+                <MailtoButton
+                  variant="primary"
+                  size="lg"
+                  subject={cta.subject}
+                  ctaId="hero"
+                >
                   {cta.label}
                 </MailtoButton>
                 {cta.caption && (

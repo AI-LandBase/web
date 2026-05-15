@@ -89,6 +89,7 @@ export function Footer() {
               variant="onDark"
               size="md"
               subject="[AI.LandBase] サービスに関するお問い合わせ"
+              ctaId="footer"
             >
               メールで相談する
             </MailtoButton>

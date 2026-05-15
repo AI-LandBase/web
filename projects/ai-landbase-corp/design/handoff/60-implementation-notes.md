@@ -533,18 +533,22 @@ JSON-LD on `/about`:
 
 ---
 
-## 11. Analytics (Phase 7 — placeholder note)
+## 11. Analytics
 
-Use `next/script` with `strategy="afterInteractive"` for GA4. Do NOT inject any analytics before page becomes interactive (LCP risk).
+Use the official `@next/third-parties/google` package — its `<GoogleAnalytics>` component is a thin wrapper around `next/script` with `afterInteractive` strategy and ships automatic `page_view` firing on App Router navigation (`usePathname` based). This replaces the earlier `next/script` direct-embed note: same runtime behavior, less code, and avoids hand-rolling the SPA `page_view` re-fire.
 
 ```tsx
-<Script
-  strategy="afterInteractive"
-  src={`https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`}
-/>
+// src/app/layout.tsx
+import { GoogleAnalytics } from "@next/third-parties/google";
+
+const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+// ...
+{gaMeasurementId && <GoogleAnalytics gaId={gaMeasurementId} />}
 ```
 
-CTA-click tracking lives in the `MailtoButton` component — add `onClick` that calls `window.gtag?.('event', 'cta_click', { cta_id })`.
+Guard with `process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID` so the tag is omitted when the variable is unset (dev/preview environments).
+
+CTA-click tracking lives in the `MailtoButton` component — `onClick` calls `window.gtag?.('event', 'cta_click', { cta_id })`. Each call site passes a `ctaId` identifying the location (`header`, `footer`, `hero`, `mobile-nav`, `cta-section-{index}`, `contact-intent-{index}`).
 
 ---
 
