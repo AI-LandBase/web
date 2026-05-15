@@ -16,6 +16,8 @@ function PageViewTracker() {
 
   useEffect(() => {
     if (!pathname) return;
+    if (typeof window === "undefined" || !window.gtag) return;
+
     const url = pathname + (search ? `?${search}` : "");
 
     if (previousPath.current === null) {
@@ -25,7 +27,7 @@ function PageViewTracker() {
     if (previousPath.current === url) return;
     previousPath.current = url;
 
-    window.gtag?.("event", "page_view", {
+    window.gtag("event", "page_view", {
       page_path: url,
       page_location: window.location.href,
       page_title: document.title,
@@ -36,6 +38,8 @@ function PageViewTracker() {
 }
 
 export function GoogleAnalytics({ gaId }: Props) {
+  if (!gaId) return null;
+
   return (
     <>
       <Script
